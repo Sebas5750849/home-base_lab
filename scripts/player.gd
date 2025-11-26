@@ -173,14 +173,14 @@ func _enter_crouch():
 		return
 	is_crouching = true
 	cshape.shape = crouching_shape
-	cshape.position.y = -9
+	cshape.position.y = -14
 
 func _exit_crouch():
 	if not is_crouching:
 		return
 	is_crouching = false
 	cshape.shape = standing_shape
-	cshape.position.y = -16
+	cshape.position.y = -22
 
 func _above_head_is_clear() -> bool:
 	return !ray1.is_colliding() and !ray2.is_colliding()
