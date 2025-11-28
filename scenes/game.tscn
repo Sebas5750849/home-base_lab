@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://c5apdcg20j6a0"]
+[gd_scene load_steps=6 format=4 uid="uid://c5apdcg20j6a0"]
 
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://bgs1jb55e5qxv" path="res://assets/tile_sheet_v.1.0.png" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="3_lnu2h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -255,3 +256,7 @@ position = Vector2(190, 142)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, 3)
 zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_lnu2h")]
