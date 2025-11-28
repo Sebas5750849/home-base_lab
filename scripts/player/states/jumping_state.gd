@@ -14,9 +14,9 @@ func update_state(delta):
 	Player.handle_gravity(delta)
 	Player.horizontal_movement()
 	Player.handle_jump()
-	Player.handle_dash()
 	handle_jump_to_fall()
 	handle_animations()
+	Player.handle_dash()
 	
 func handle_jump_to_fall():
 	if Player.velocity.y >= 0:
