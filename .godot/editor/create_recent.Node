@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 CanvasLayer
 ColorRect
 AnimationPlayer
 Button
 VBoxContainer
 PanelContainer
+=======
+Node
+>>>>>>> origin/main
 Node2D
 RayCast2D
 Timer
