@@ -279,24 +279,22 @@ animations = [{
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -24)
+position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_fjrip")
 animation = &"crouch_walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -22)
 shape = ExtResource("3_qhqgy")
 
-[node name="RayCasts" type="Node2D" parent="."]
+[node name="CrouchRaycast1" type="RayCast2D" parent="."]
+position = Vector2(-3, -3)
+target_position = Vector2(0, -42)
 
-[node name="CrouchRaycastL" type="RayCast2D" parent="RayCasts"]
-position = Vector2(-6, -18)
-target_position = Vector2(0, -21)
-
-[node name="CrouchRaycastR" type="RayCast2D" parent="RayCasts"]
-position = Vector2(6, -18)
-target_position = Vector2(0, -21)
+[node name="CrouchRaycast2" type="RayCast2D" parent="."]
+position = Vector2(3, -3)
+target_position = Vector2(0, -42)
 
 [node name="Timers" type="Node" parent="."]
 

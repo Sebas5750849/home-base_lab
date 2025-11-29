@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-#region constatnts and variables
+#region constants and variables
 # constants
 const RUNNING_SPEED: float = 200
 const GROUND_ACCELERATION: float = 45
@@ -12,7 +12,7 @@ const JUMP_VELOCITY: float = -400
 const GRAVITY_JUMP: float = 980 # ProjectSettings.get_setting("physics/2d/default_gravity") = 980.0 by default
 const GRAVITY_FALL: float = 1000
 const DASH_SPEED: float = 600
-const DASH_DURATION:float = 0.5
+const DASH_DURATION:float = 0.3
 const DASH_COOLDOWN: float = 1
 const ROLL_SPEED: float = 200
 const ROLL_DURATION: float = 0.4
@@ -41,8 +41,8 @@ var jump_buffered: bool = false
 # node references
 @onready var sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
-@onready var crouch_ray_L = $RayCasts/CrouchRaycastL
-@onready var crouch_ray_R = $RayCasts/CrouchRaycastR
+@onready var crouch_ray_1 = $CrouchRaycast1
+@onready var crouch_ray_2 = $CrouchRaycast2
 @onready var coyote_timer = $Timers/CoyoteTimer
 @onready var jump_buffer_timer = $Timers/JumpBufferTimer
 @onready var jump_height_timer = $Timers/JumpHeightTimer
@@ -66,7 +66,6 @@ var previous_state = null
 var standing_shape = preload("res://resources/standing_collision_shape.tres")
 var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
 #endregion
-
 
 #region main game loop
 func _ready() -> void:
@@ -172,7 +171,7 @@ func horizontal_movement(acceleration: float = GROUND_ACCELERATION, deceleration
 		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, deceleration)
 
 func handle_falling():
-	if not is_on_floor():
+	if not is_on_floor() and current_state not in [States.Dashing, States.Jumping]:
 		change_state(States.Falling)
 
 func handle_crouch():

@@ -1,12 +1,19 @@
+<<<<<<< HEAD
+CanvasLayer
+ColorRect
+AnimationPlayer
+Button
+VBoxContainer
+PanelContainer
+=======
 Node
+>>>>>>> origin/main
 Node2D
 RayCast2D
 Timer
 Sprite2D
-AnimationPlayer
 CollisionShape2D
 Area2D
 TileMapLayer
 Camera2D
 AnimatedSprite2D
-CharacterBody2D

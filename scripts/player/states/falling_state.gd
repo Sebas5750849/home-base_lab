@@ -15,6 +15,7 @@ func update_state(delta):
 	Player.handle_landing()
 	Player.handle_jump()
 	handle_animations()
+	Player.handle_dash()
 
 func handle_animations():
 	$"../../AnimatedSprite2D".play("jump")
