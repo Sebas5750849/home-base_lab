@@ -5,13 +5,13 @@
 [ext_resource type="Shape2D" uid="uid://caeu0l5xg45co" path="res://resources/standing_collision_shape.tres" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://d0k7cag1bjcy3" path="res://scripts/player/states/States.gd" id="4_3v2ag"]
 [ext_resource type="Script" uid="uid://7h11j1c6pbxj" path="res://scripts/player/states/idle_state.gd" id="5_d2wvv"]
-[ext_resource type="Script" uid="uid://uaqu2jl8m0du" path="res://scripts/player/states/running_state.gd" id="6_3v2ag"]
-[ext_resource type="Script" uid="uid://cg2iencac1yp8" path="res://scripts/player/states/jumping_state.gd" id="7_jej6c"]
-[ext_resource type="Script" uid="uid://22qttwcywnsc" path="res://scripts/player/states/falling_state.gd" id="8_f1ej7"]
-[ext_resource type="Script" uid="uid://dc3ijotir8aem" path="res://scripts/player/states/crouching_state.gd" id="9_oprun"]
-[ext_resource type="Script" uid="uid://dbrhtockfqo8b" path="res://scripts/player/states/crawling_state.gd" id="10_a8ls1"]
-[ext_resource type="Script" uid="uid://bewcvl3hxyfjr" path="res://scripts/player/states/rolling_state.gd" id="11_qfm1y"]
-[ext_resource type="Script" uid="uid://0qe40hjkrsj7" path="res://scripts/player/states/dashing_state.gd" id="12_3v2ag"]
+[ext_resource type="Script" uid="uid://uaqu2jl8m0du" path="res://scripts/player/states/run_state.gd" id="6_3v2ag"]
+[ext_resource type="Script" uid="uid://cg2iencac1yp8" path="res://scripts/player/states/jump_state.gd" id="7_jej6c"]
+[ext_resource type="Script" uid="uid://22qttwcywnsc" path="res://scripts/player/states/fall_state.gd" id="8_f1ej7"]
+[ext_resource type="Script" uid="uid://dc3ijotir8aem" path="res://scripts/player/states/crouch_state.gd" id="9_oprun"]
+[ext_resource type="Script" uid="uid://dbrhtockfqo8b" path="res://scripts/player/states/crouch_walk_state.gd" id="10_a8ls1"]
+[ext_resource type="Script" uid="uid://bewcvl3hxyfjr" path="res://scripts/player/states/roll_state.gd" id="11_qfm1y"]
+[ext_resource type="Script" uid="uid://0qe40hjkrsj7" path="res://scripts/player/states/dash_state.gd" id="12_3v2ag"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("3_dqkch")
@@ -309,6 +309,14 @@ one_shot = true
 [node name="JumpHeightTimer" type="Timer" parent="Timers"]
 wait_time = 0.15
 one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="Timers"]
+
+[node name="RollCooldownTimer" type="Timer" parent="Timers"]
+
+[node name="DashTimer" type="Timer" parent="Timers"]
+
+[node name="RollTimer" type="Timer" parent="Timers"]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_3v2ag")
