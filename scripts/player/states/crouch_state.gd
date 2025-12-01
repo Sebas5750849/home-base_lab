@@ -1,4 +1,6 @@
 extends PlayerState
+#class_name Crouching
+
 
 func enter_state():
 	Name = "Crouching"

@@ -4,38 +4,54 @@ extends CharacterBody2D
 #region constants and variables
 # node references
 @onready var sprite = $AnimatedSprite2D
+
 @onready var collision_shape = $CollisionShape2D
+
+# raycasts
 @onready var crouch_ray_1 = $CrouchRaycast1
 @onready var crouch_ray_2 = $CrouchRaycast2
+@onready var rc_bottom_right = $Raycasts/WallJump/RCBottomRight
+@onready var rc_bottom_left = $Raycasts/WallJump/RCBottomLeft
+
+# states
+@onready var States = $StateMachine
+
+# Timers
 @onready var coyote_timer = $Timers/CoyoteTimer
 @onready var jump_buffer_timer = $Timers/JumpBufferTimer
 @onready var jump_height_timer = $Timers/JumpHeightTimer
-@onready var States = $StateMachine
 @onready var dash_cooldown_timer = $Timers/DashCooldownTimer
 @onready var roll_colldown_timer = $Timers/RollCooldownTimer
 @onready var dash_timer = $Timers/DashTimer
 @onready var roll_timer = $Timers/RollTimer
 
-# Collision shapes
+# External collision shapes
 var standing_shape = preload("res://resources/standing_collision_shape.tres")
 var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
 
 # constants
-const RUNNING_SPEED: float = 250
-const GROUND_ACCELERATION: float = 45
-const GROUND_DECELERATION: float = 25
-const AIR_ACCELERATION: float = 0
-const AIR_DECELERATION: float = 0
+const RUNNING_SPEED: float = 200
 const JUMP_VELOCITY: float = -400
-const GRAVITY_JUMP: float = 980 # ProjectSettings.get_setting("physics/2d/default_gravity") = 980.0 by default
-const GRAVITY_FALL: float = 1000
+const GRAVITY_JUMP: float = 600 # ProjectSettings.get_setting("physics/2d/default_gravity") = 980.0 by default
+const GRAVITY_FALL: float = 700
 const DASH_SPEED: float = 700
+const ROLL_SPEED: float = 200
+const CROUCH_SPEED_MULTIPLIER: float = 0.35
+const WALL_JUMP_VELOCITY: float = -400
+const WALL_JUMP_H_SPEED: float = 200 # speed with which you jump away from the wall
+const WALL_JUMP_Y_SPEED_PEAK: float = 0 # vertical speed at which wall jump will transition to falling
+
+const GROUND_ACCELERATION: float = 40
+const GROUND_DECELERATION: float = 50
+const AIR_ACCELERATION: float = 15
+const AIR_DECELERATION: float = 20
+const WALL_KICK_ACCELERATION: float = 4
+const WALL_KICK_DECELERATION: float = 5
+
 const DASH_DURATION:float = 0.3
 const DASH_COOLDOWN: float = 1
-const ROLL_SPEED: float = 200
 const ROLL_DURATION: float = 0.4
 const ROLL_COOLDOWN: float = 1
-const CROUCH_SPEED_MULTIPLIER: float = 0.35
 const JUMP_BUFFER_TIME: float = 0.15
 const COYOTE_TIME: float = 0.1
 const MAX_JUMPS: int = 2
@@ -45,6 +61,7 @@ var move_speed: float = RUNNING_SPEED
 var jump_speed: float = JUMP_VELOCITY
 var move_direction_x = 0
 var jumps: int = 0
+var wall_direction: Vector2 = Vector2.ZERO
 var facing: int = 1
 
 var dash_cooldown: float = 0.0
@@ -110,6 +127,14 @@ func _on_jump_height_timer_timeout() -> void:
 	if !Input.is_action_pressed("jump") and velocity.y < 0:
 		velocity.y = max(velocity.y, -100)
 
+func get_wall_direction():	
+	if rc_bottom_left.is_colliding():
+		wall_direction = Vector2.LEFT
+	elif rc_bottom_right.is_colliding():
+		wall_direction = Vector2.RIGHT
+	else:
+		wall_direction = Vector2.ZERO
+
 func get_input_state():
 	key_jump = Input.is_action_just_pressed("jump")
 	key_jump_pressed = Input.is_action_pressed("jump")
@@ -126,6 +151,12 @@ func get_input_state():
 func handle_dash():
 	if key_dash and dash_cooldown <= 0:
 		change_state(States.Dashing)
+
+func handle_wall_jump():
+	get_wall_direction()
+	if (key_jump or jump_buffer_timer.time_left > 0) and wall_direction != Vector2.ZERO:
+		print("Wall Jump")
+		change_state(States.WallJump)
 
 func handle_gravity(delta, gravity: float = GRAVITY_JUMP):
 	if not is_on_floor():
