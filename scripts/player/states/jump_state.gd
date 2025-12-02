@@ -1,4 +1,6 @@
 extends PlayerState
+#class_name Jumping
+
 
 func enter_state():
 	Name = "Jumping"
@@ -15,8 +17,9 @@ func update_state(delta):
 	Player.horizontal_movement()
 	Player.handle_jump()
 	handle_jump_to_fall()
-	handle_animations()
+	Player.handle_wall_jump()
 	Player.handle_dash()
+	handle_animations()
 	
 func handle_jump_to_fall():
 	if Player.velocity.y >= 0:
