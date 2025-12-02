@@ -1,17 +1,18 @@
-[gd_scene load_steps=46 format=3 uid="uid://fp2kjv70lur3"]
+[gd_scene load_steps=47 format=3 uid="uid://fp2kjv70lur3"]
 
 [ext_resource type="Script" uid="uid://werk8lrckice" path="res://scripts/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bt10p3hnc8kd2" path="res://assets/platformer_sprites_pixelized_1.png" id="3_dqkch"]
 [ext_resource type="Shape2D" uid="uid://caeu0l5xg45co" path="res://resources/standing_collision_shape.tres" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://d0k7cag1bjcy3" path="res://scripts/player/states/States.gd" id="4_3v2ag"]
 [ext_resource type="Script" uid="uid://7h11j1c6pbxj" path="res://scripts/player/states/idle_state.gd" id="5_d2wvv"]
-[ext_resource type="Script" uid="uid://uaqu2jl8m0du" path="res://scripts/player/states/running_state.gd" id="6_3v2ag"]
-[ext_resource type="Script" uid="uid://cg2iencac1yp8" path="res://scripts/player/states/jumping_state.gd" id="7_jej6c"]
-[ext_resource type="Script" uid="uid://22qttwcywnsc" path="res://scripts/player/states/falling_state.gd" id="8_f1ej7"]
-[ext_resource type="Script" uid="uid://dc3ijotir8aem" path="res://scripts/player/states/crouching_state.gd" id="9_oprun"]
-[ext_resource type="Script" uid="uid://dbrhtockfqo8b" path="res://scripts/player/states/crawling_state.gd" id="10_a8ls1"]
-[ext_resource type="Script" uid="uid://bewcvl3hxyfjr" path="res://scripts/player/states/rolling_state.gd" id="11_qfm1y"]
-[ext_resource type="Script" uid="uid://0qe40hjkrsj7" path="res://scripts/player/states/dashing_state.gd" id="12_3v2ag"]
+[ext_resource type="Script" uid="uid://uaqu2jl8m0du" path="res://scripts/player/states/run_state.gd" id="6_3v2ag"]
+[ext_resource type="Script" uid="uid://cg2iencac1yp8" path="res://scripts/player/states/jump_state.gd" id="7_jej6c"]
+[ext_resource type="Script" uid="uid://22qttwcywnsc" path="res://scripts/player/states/fall_state.gd" id="8_f1ej7"]
+[ext_resource type="Script" uid="uid://dc3ijotir8aem" path="res://scripts/player/states/crouch_state.gd" id="9_oprun"]
+[ext_resource type="Script" uid="uid://dbrhtockfqo8b" path="res://scripts/player/states/crouch_walk_state.gd" id="10_a8ls1"]
+[ext_resource type="Script" uid="uid://bewcvl3hxyfjr" path="res://scripts/player/states/roll_state.gd" id="11_qfm1y"]
+[ext_resource type="Script" uid="uid://0qe40hjkrsj7" path="res://scripts/player/states/dash_state.gd" id="12_3v2ag"]
+[ext_resource type="Script" uid="uid://b4d8m47dve5tf" path="res://scripts/player/states/wall_jump_state.gd" id="13_jej6c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("3_dqkch")
@@ -143,6 +144,16 @@ region = Rect2(192, 96, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Wall_Jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Wall_Kick",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
@@ -281,12 +292,24 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_fjrip")
-animation = &"crouch_walk"
+animation = &"Wall_Kick"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -22)
 shape = ExtResource("3_qhqgy")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="WallJump" type="Node2D" parent="Raycasts"]
+
+[node name="RCBottomRight" type="RayCast2D" parent="Raycasts/WallJump"]
+position = Vector2(0, -10)
+target_position = Vector2(12, 0)
+
+[node name="RCBottomLeft" type="RayCast2D" parent="Raycasts/WallJump"]
+position = Vector2(0, -10)
+target_position = Vector2(-12, 0)
 
 [node name="CrouchRaycast1" type="RayCast2D" parent="."]
 position = Vector2(-3, -3)
@@ -309,6 +332,14 @@ one_shot = true
 [node name="JumpHeightTimer" type="Timer" parent="Timers"]
 wait_time = 0.15
 one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="Timers"]
+
+[node name="RollCooldownTimer" type="Timer" parent="Timers"]
+
+[node name="DashTimer" type="Timer" parent="Timers"]
+
+[node name="RollTimer" type="Timer" parent="Timers"]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_3v2ag")
@@ -336,6 +367,9 @@ script = ExtResource("11_qfm1y")
 
 [node name="Dashing" type="Node" parent="StateMachine"]
 script = ExtResource("12_3v2ag")
+
+[node name="WallJump" type="Node" parent="StateMachine"]
+script = ExtResource("13_jej6c")
 
 [connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Timers/JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]

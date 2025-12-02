@@ -1,4 +1,6 @@
 extends PlayerState
+#class_name Idle
+
 
 func enter_state():
 	Name = "Idle"

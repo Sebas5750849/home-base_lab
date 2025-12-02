@@ -1,5 +1,6 @@
 extends Node
 
+
 @onready var Idle = $Idle
 @onready var Running = $Running
 @onready var Jumping = $Jumping
@@ -8,3 +9,4 @@ extends Node
 @onready var Crawling = $Crawling
 @onready var Rolling = $Rolling
 @onready var Dashing = $Dashing
+@onready var WallJump = $WallJump
