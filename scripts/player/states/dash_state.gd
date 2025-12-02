@@ -23,14 +23,6 @@ func update_state(delta):
 func handle_animations():
 	$"../../AnimatedSprite2D".play("dash")
 	Player.handle_flip_h()
-	#
-#func handle_dash_to_fall():
-	#if not Player.is_on_floor() and Player.dash_timer <= 0:
-		#Player.change_state(States.Falling)
-#
-#func handle_dash_to_idle():
-	#if Player.is_on_floor() and Player.dash_timer <= 0:
-		#Player.change_state(States.Idle)
 
 func handle_dash_transition():
 	if Player.dash_timer <= 0:
