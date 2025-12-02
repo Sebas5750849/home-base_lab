@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpei5b4drb5en"]
+
+[ext_resource type="Script" uid="uid://brv1dke0hkolb" path="res://scripts/reset_ma_game,_i_died.gd" id="1_o1fcr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e7dc5"]
+
+[node name="Reset ma game" type="Area2D"]
+script = ExtResource("1_o1fcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(613, 164)
+shape = SubResource("WorldBoundaryShape2D_e7dc5")
+debug_color = Color(0.9999997, 0.0014152366, 0.09820508, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
