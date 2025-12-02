@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://cbnty31cvslpm"]
+[gd_scene load_steps=4 format=4 uid="uid://cbnty31cvslpm"]
 
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="2_iunqk"]
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="2_myyxp"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="4_757ls"]
 
 [node name="0_ tutorial level" type="Node2D"]
 
@@ -16,3 +17,7 @@ tile_set = ExtResource("2_iunqk")
 [node name="Reset ma game" parent="." instance=ExtResource("2_myyxp")]
 position = Vector2(0, -1)
 collision_mask = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_757ls")]
