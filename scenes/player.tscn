@@ -287,7 +287,6 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -372,6 +371,9 @@ script = ExtResource("12_3v2ag")
 
 [node name="WallJump" type="Node" parent="StateMachine"]
 script = ExtResource("13_jej6c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Timers/JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]

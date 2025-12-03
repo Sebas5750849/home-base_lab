@@ -86,6 +86,13 @@ var key_crouch = false
 # states
 var current_state = null
 var previous_state = null
+
+# ability toggles
+var can_double_jump: bool = false
+var can_wall_jump:bool = false
+var can_dash: bool = false
+var can_roll: bool = false
+
 #endregion
 
 #region main game loop
@@ -150,7 +157,7 @@ func get_input_state():
 	if key_left: facing = -1
 
 func handle_dash():
-	if key_dash and dash_cooldown <= 0:
+	if key_dash and dash_cooldown <= 0 and can_dash:
 		change_state(States.Dashing)
 
 func handle_roll():
@@ -159,7 +166,7 @@ func handle_roll():
 
 func handle_wall_jump():
 	get_wall_direction()
-	if (key_jump or jump_buffer_timer.time_left > 0) and wall_direction != Vector2.ZERO:
+	if (key_jump or jump_buffer_timer.time_left > 0) and wall_direction != Vector2.ZERO and can_wall_jump:
 		print("Wall Jump")
 		change_state(States.WallJump)
 
@@ -176,7 +183,7 @@ func handle_jump():
 			jumps += 1
 			change_state(States.Jumping)
 	else:
-		if key_jump and 0 < jumps and jumps < MAX_JUMPS:
+		if key_jump and 0 < jumps and jumps < MAX_JUMPS and can_double_jump:
 			jumps += 1
 			change_state(States.Jumping)
 		elif coyote_timer.time_left > 0:
@@ -208,5 +215,8 @@ func handle_crouch():
 
 func handle_flip_h():
 	sprite.flip_h = facing < 1
+
+
+
 
 #endregion
