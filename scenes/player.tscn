@@ -293,8 +293,9 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_fjrip")
-animation = &"Wall_Kick"
+animation = &"run"
 autoplay = "idle"
+frame_progress = 0.18215081
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -22)

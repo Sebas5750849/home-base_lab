@@ -54,6 +54,7 @@ const ROLL_DURATION: float = 0.4
 const ROLL_COOLDOWN: float = 1
 const JUMP_BUFFER_TIME: float = 0.15
 const COYOTE_TIME: float = 0.1
+const JUMP_HEIGHT_TIME: float = 0.15
 const MAX_JUMPS: int = 2
 
 # variables
@@ -151,6 +152,10 @@ func get_input_state():
 func handle_dash():
 	if key_dash and dash_cooldown <= 0:
 		change_state(States.Dashing)
+
+func handle_roll():
+	if key_dash and roll_cooldown <= 0 and current_state == States.Crawling:
+		change_state(States.Rolling)
 
 func handle_wall_jump():
 	get_wall_direction()

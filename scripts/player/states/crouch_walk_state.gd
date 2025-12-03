@@ -21,10 +21,11 @@ func update_state(delta):
 	return_to_idle()
 	handle_animations()
 	return_to_crouch()
+	Player.handle_roll()
 	
-func handle_roll():
-	if Player.key_roll:
-		Player.change_state(States.Rolling)
+#func handle_roll():
+	#if Player.key_roll:
+		#Player.change_state(States.Rolling)
 		
 func handle_animations():
 	$"../../AnimatedSprite2D".play("crouch_walk")

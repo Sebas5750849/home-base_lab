@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5apdcg20j6a0"]
+[gd_scene load_steps=3 format=3 uid="uid://c5apdcg20j6a0"]
 
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://cu6btkq7ojv00" path="res://scenes/Level scenes/wall_jump_level.tscn" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cbnty31cvslpm" path="res://scenes/Level scenes/0__tutorial_level.tscn" id="3_lbhrr"]
 
 [node name="Game" type="Node2D"]
 
@@ -13,12 +12,6 @@ position = Vector2(20, -172)
 position = Vector2(-3, 9)
 zoom = Vector2(2.5, 2.5)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_lnu2h")]
-offset_top = -635.0
-offset_bottom = -635.0
-
 [node name="Levels" type="Node" parent="."]
 
-[node name="WallJumpLevel" parent="Levels" instance=ExtResource("3_lbhrr")]
+[node name="0_ tutorial level" parent="Levels" instance=ExtResource("3_lbhrr")]
