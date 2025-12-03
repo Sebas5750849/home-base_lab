@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5apdcg20j6a0"]
 
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://cbnty31cvslpm" path="res://scenes/Level scenes/0__tutorial_level.tscn" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://kxuixcuebtcu" path="res://scenes/Level scenes/testing_level.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Node2D"]
 
@@ -10,8 +10,8 @@ position = Vector2(20, -172)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-3, 9)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 
 [node name="Levels" type="Node" parent="."]
 
-[node name="0_ tutorial level" parent="Levels" instance=ExtResource("3_lbhrr")]
+[node name="Testing level" parent="Levels" instance=ExtResource("2_yqjtg")]

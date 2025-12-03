@@ -12,7 +12,7 @@ extends CharacterBody2D
 @onready var crouch_ray_2 = $CrouchRaycast2
 @onready var rc_bottom_right = $Raycasts/WallJump/RCBottomRight
 @onready var rc_bottom_left = $Raycasts/WallJump/RCBottomLeft
-
+@onready var rc_down = $Raycasts/Terrain/RCDown
 # states
 @onready var States = $StateMachine
 
@@ -73,6 +73,9 @@ var roll_direction: float = 1
 var can_coyote_jump: bool = false
 var jump_buffered: bool = false
 
+var accel = 3
+var decel = 2 
+
 # key inputs
 var key_jump = false
 var key_jump_pressed = false
@@ -86,7 +89,6 @@ var key_crouch = false
 # states
 var current_state = null
 var previous_state = null
-#endregion
 
 #region main game loop
 func _ready() -> void:
@@ -104,9 +106,9 @@ func _physics_process(delta: float) -> void:
 		dash_cooldown -= delta
 	if roll_cooldown > 0:
 		roll_cooldown -= delta
-
+	
 	current_state.update_state(delta)
-
+		
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -148,6 +150,14 @@ func get_input_state():
 
 	if key_right: facing = 1
 	if key_left: facing = -1
+
+func handle_ice():
+	if is_on_ice() and current_state != States.RunningIce and (key_left or key_right):
+		change_state(States.RunningIce)
+	elif is_on_ice() and current_state != States.Sliding and (!key_left and !key_right):
+		change_state(States.Sliding)
+	elif not is_on_ice() and (current_state == States.Sliding or current_state == States.RunningIce):
+		change_state(States.Running)
 
 func handle_dash():
 	if key_dash and dash_cooldown <= 0:
@@ -208,5 +218,27 @@ func handle_crouch():
 
 func handle_flip_h():
 	sprite.flip_h = facing < 1
+
+func is_on_ice():
+	var collider = rc_down.get_collider()
+	if not collider:
+		return false
+	return collider.name == ("IceBlocks")
+
+func movement_on_ice(movement_direction_x, delta):
+	var target_speed = movement_direction_x * RUNNING_SPEED
+	
+	if movement_direction_x != 0:
+		if velocity.x < target_speed:
+			velocity.x = min(velocity.x + accel, target_speed)
+		elif velocity.x > target_speed:
+			velocity.x = max(velocity.x - accel, target_speed)
+	else:
+		# decelerate toward zero
+		if velocity.x > 0:
+			velocity.x = max(velocity.x - decel, 0)
+		elif velocity.x < 0:
+			velocity.x = min(velocity.x + decel, 0)
+
 
 #endregion
