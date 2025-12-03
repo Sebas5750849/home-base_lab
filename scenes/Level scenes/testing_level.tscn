@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://kxuixcuebtcu"]
 
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="1_fc88k"]
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_e3swm"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/menu scenes/pause_menu.tscn" id="2_e3swm"]
 
 [node name="Testing level" type="Node2D"]
 

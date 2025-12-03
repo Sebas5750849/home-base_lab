@@ -10,7 +10,7 @@ position = Vector2(20, -172)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-3, 9)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 
 [node name="Levels" type="Node" parent="."]
 

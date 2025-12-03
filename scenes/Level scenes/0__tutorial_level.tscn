@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="2_iunqk"]
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="2_myyxp"]
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="4_757ls"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/menu scenes/pause_menu.tscn" id="4_757ls"]
 
 [node name="0_ tutorial level" type="Node2D"]
 
