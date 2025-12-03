@@ -26,7 +26,9 @@ func handle_animations():
 
 func handle_dash_transition():
 	if Player.dash_timer <= 0:
-		if Player.is_on_floor():
+		if Player.is_on_floor() and !Player.is_on_ice():
 			Player.change_state(States.Idle)
+		elif Player.is_on_floor() and Player.is_on_ice():
+			Player.change_state(States.Sliding)
 		elif not Player.is_on_floor():
 			Player.change_state(States.Falling)

@@ -37,6 +37,7 @@ const GRAVITY_FALL: float = 700
 const DASH_SPEED: float = 700
 const ROLL_SPEED: float = 200
 const CROUCH_SPEED_MULTIPLIER: float = 0.35
+const MUD_SPEED_MULTIPLIER = 0.3
 const WALL_JUMP_VELOCITY: float = -400
 const WALL_JUMP_H_SPEED: float = 200 # speed with which you jump away from the wall
 const WALL_JUMP_Y_SPEED_PEAK: float = 0 # vertical speed at which wall jump will transition to falling
@@ -161,6 +162,12 @@ func handle_ice():
 	elif not is_on_ice() and current_state == States.Sliding:
 		change_state(States.Idle)
 
+func handle_mud():
+	if is_on_mud() and current_state != States.RunningMud:
+		change_state(States.RunningMud)
+	elif not is_on_mud() and (current_state == States.RunningMud):
+		change_state(States.Running)
+
 func handle_dash():
 	if key_dash and dash_cooldown <= 0:
 		change_state(States.Dashing)
@@ -242,5 +249,17 @@ func movement_on_ice(movement_direction_x, delta):
 		elif velocity.x < 0:
 			velocity.x = min(velocity.x + decel, 0)
 
+func is_on_mud():
+	var collider = rc_down.get_collider()
+	if not collider:
+		return false
+	return collider.name == ("MudBlocks")
+
+func movement_on_mud(acceleration: float = GROUND_ACCELERATION, deceleration: float = GROUND_DECELERATION, multiplier: float = MUD_SPEED_MULTIPLIER):
+	move_direction_x = Input.get_axis("move_left", "move_right")
+	if move_direction_x != 0:
+		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, acceleration)
+	else:
+		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, deceleration)
 
 #endregion
