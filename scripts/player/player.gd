@@ -156,8 +156,10 @@ func handle_ice():
 		change_state(States.RunningIce)
 	elif is_on_ice() and current_state != States.Sliding and (!key_left and !key_right):
 		change_state(States.Sliding)
-	elif not is_on_ice() and (current_state == States.Sliding or current_state == States.RunningIce):
+	elif not is_on_ice() and (current_state == States.RunningIce):
 		change_state(States.Running)
+	elif not is_on_ice() and current_state == States.Sliding:
+		change_state(States.Idle)
 
 func handle_dash():
 	if key_dash and dash_cooldown <= 0:

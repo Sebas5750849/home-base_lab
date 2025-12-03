@@ -24,5 +24,5 @@ func handle_idle():
 		Player.change_state(States.Idle)
 
 func handle_animations():
-	$"../../AnimatedSprite2D".play("Idle")
+	$"../../AnimatedSprite2D".play('idle')
 	Player.handle_flip_h()
