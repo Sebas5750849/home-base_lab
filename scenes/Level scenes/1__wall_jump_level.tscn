@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu6btkq7ojv00"]
+[gd_scene load_steps=6 format=3 uid="uid://cu6btkq7ojv00"]
 
 [ext_resource type="Texture2D" uid="uid://bgs1jb55e5qxv" path="res://assets/tile_sheet_v.1.0.png" id="1_isiuw"]
+[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_rq8aw"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="3_veio8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pr1re"]
@@ -431,3 +432,5 @@ layer_0/tile_data = PackedInt32Array(327665, 65536, 2, 327666, 65536, 2, 327667,
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_veio8")]
+
+[node name="Player" parent="." instance=ExtResource("3_rq8aw")]

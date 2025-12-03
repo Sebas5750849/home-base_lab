@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="game_prototype"
-run/main_scene="uid://c5apdcg20j6a0"
+run/main_scene="uid://cbnty31cvslpm"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[global_group]
+
+Player=""
 
 [input]
 
