@@ -10,3 +10,6 @@ extends Node
 @onready var Rolling = $Rolling
 @onready var Dashing = $Dashing
 @onready var WallJump = $WallJump
+@onready var RunningIce = $RunningIce
+@onready var Sliding = $Sliding
+@onready var RunningMud = $RunningMud
