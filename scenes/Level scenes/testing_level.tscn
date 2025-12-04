@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://kxuixcuebtcu"]
+[gd_scene load_steps=5 format=4 uid="uid://kxuixcuebtcu"]
 
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="1_fc88k"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_e3swm"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_hujdf"]
+[ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="4_infm2"]
 
 [node name="Testing level" type="Node2D"]
 
@@ -30,3 +31,8 @@ text = "Player can jump 13 pixels without dash"
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_e3swm")]
 
 [node name="Player" parent="." instance=ExtResource("3_hujdf")]
+
+[node name="flower_enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_infm2")]
+position = Vector2(352, -13)
+collision_mask = 5
+player = NodePath("../Player")
