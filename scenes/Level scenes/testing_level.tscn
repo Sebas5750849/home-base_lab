@@ -15,7 +15,7 @@ tile_map_data = PackedByteArray("AADw/wAAAAARAC0AAADv/wAAAAARAC0AAADu/wAAAAARAC0
 tile_set = ExtResource("1_fc88k")
 
 [node name="MudBlocks" type="TileMapLayer" parent="."]
-y_sort_enabled = true
+z_index = 100
 tile_map_data = PackedByteArray("AAARAAAAAAAIACwAAAASAAAAAAAIACwAAAATAAAAAAAIACwAAAAUAAAAAAAIACwAAAAVAAAAAAAIACwAAAAWAAAAAAAIACwAAAAXAAAAAAAIACwAAAAYAAAAAAAIACwAAAAZAAAAAAAIACwAAAAQAAAAAAAIACwAAAAPAAAAAAAIACwAAAAaAAAAAAAIACwAAAA=")
 tile_set = ExtResource("1_fc88k")
 
@@ -38,11 +38,7 @@ text = "Player can jump 13 pixels without dash"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_e3swm")]
 
-[node name="Player" parent="." instance=ExtResource("3_hujdf")]
-y_sort_enabled = true
-
 [node name="Label3" type="Label" parent="."]
-anchors_preset = -1
 offset_left = 252.0
 offset_top = -34.0
 offset_right = 420.0
@@ -55,3 +51,5 @@ offset_top = -44.0
 offset_right = -285.0
 offset_bottom = -21.0
 text = "These are ice tiles"
+
+[node name="Player" parent="." instance=ExtResource("3_hujdf")]
