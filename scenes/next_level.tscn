@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://6rbe65q1yky6"]
 
-[ext_resource type="Texture2D" uid="uid://bgqatg7wa6t3n" path="res://icon.svg" id="1_rf0ph"]
 [ext_resource type="Script" uid="uid://cbdyti4fsjjfp" path="res://scripts/next_level.gd" id="1_sd4vo"]
+[ext_resource type="Texture2D" uid="uid://bkcawwietdj2v" path="res://Home (base) icon.jpg.png" id="2_sd4vo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd4vo"]
-size = Vector2(38, 82)
+size = Vector2(46, 78)
 
 [node name="Next level" type="Area2D" groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_sd4vo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_sd4vo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.296875, 0.640625)
-texture = ExtResource("1_rf0ph")
+scale = Vector2(0.1851852, 0.37566137)
+texture = ExtResource("2_sd4vo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
