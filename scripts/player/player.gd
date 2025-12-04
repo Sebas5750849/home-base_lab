@@ -32,9 +32,13 @@ var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
 # constants
 const RUNNING_SPEED: float = 200
 const JUMP_VELOCITY: float = -400
-const GRAVITY_JUMP: float = 600 # ProjectSettings.get_setting("physics/2d/default_gravity") = 980.0 by default
+# const GRAVITY_JUMP: float = 600 # ProjectSettings.get_setting("physics/2d/default_gravity") = 980.0 by default
+const GRAVITY_JUMP: float = 1000 # ProjectSettings.get_setting("physics/2d/default_gravity") = 980.0 by default
+
+
 const GRAVITY_FALL: float = 700
-const DASH_SPEED: float = 700
+# const DASH_SPEED: float = 700
+const DASH_SPEED: float = 600
 const ROLL_SPEED: float = 200
 const CROUCH_SPEED_MULTIPLIER: float = 0.35
 const MUD_SPEED_MULTIPLIER = 0.3
@@ -49,7 +53,7 @@ const AIR_DECELERATION: float = 20
 const WALL_KICK_ACCELERATION: float = 4
 const WALL_KICK_DECELERATION: float = 5
 
-const DASH_DURATION:float = 0.3
+const DASH_DURATION:float = 0.0001
 const DASH_COOLDOWN: float = 1
 const ROLL_DURATION: float = 0.4
 const ROLL_COOLDOWN: float = 1

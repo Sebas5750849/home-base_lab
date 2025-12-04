@@ -318,7 +318,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 6
 collision_layer = 2
 script = ExtResource("1_g2els")
 
@@ -418,6 +419,10 @@ script = ExtResource("15_oprun")
 
 [node name="RunningMud" type="Node" parent="StateMachine"]
 script = ExtResource("16_a8ls1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, 9)
+zoom = Vector2(2, 2)
 
 [connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Timers/JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
