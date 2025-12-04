@@ -17,7 +17,7 @@ collision_mask = 2
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_vcahf")]
 
 [node name="Player" parent="." instance=ExtResource("3_xuq38")]
-position = Vector2(3213, -295)
+position = Vector2(-459, -64)
 
 [node name="In game text" type="Node2D" parent="."]
 
