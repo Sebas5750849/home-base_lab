@@ -153,6 +153,8 @@ func get_input_state():
 	if key_left: facing = -1
 
 func handle_ice():
+	if key_crouch:
+		return
 	if is_on_ice() and current_state != States.RunningIce and (key_left or key_right):
 		change_state(States.RunningIce)
 	elif is_on_ice() and current_state != States.Sliding and (!key_left and !key_right):
