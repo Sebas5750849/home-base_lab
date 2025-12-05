@@ -298,5 +298,10 @@ func check_level():
 		can_wall_jump = true
 		can_double_jump = true
 		can_roll = true
+	elif current_level.name == "linlevel_5":
+		can_dash = true 
+		can_wall_jump = true
+		can_double_jump = true
+		can_roll = true
 	
 		

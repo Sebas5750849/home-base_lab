@@ -11,7 +11,7 @@
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_ky1cg")]
 
 [node name="Player" parent="." instance=ExtResource("3_wm1rq")]
-position = Vector2(-189, -76)
+position = Vector2(-1675, -271)
 
 [node name="Labels" type="Node2D" parent="."]
 
