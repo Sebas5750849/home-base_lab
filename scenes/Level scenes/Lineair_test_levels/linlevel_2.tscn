@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="4_jwnik"]
 [ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="5_ybk1w"]
 
-[node name="0_ tutorial level" type="Node2D"]
+[node name="linlevel_2" type="Node2D"]
 
 [node name="Reset ma game" parent="." instance=ExtResource("1_eqccf")]
 position = Vector2(-18, 215)

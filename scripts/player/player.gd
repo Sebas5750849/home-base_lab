@@ -95,6 +95,12 @@ var key_crouch = false
 var current_state = null
 var previous_state = null
 
+# ability booleans
+var can_dash: bool
+var can_wall_jump: bool
+var can_double_jump: bool
+var can_roll: bool
+
 #region main game loop
 func _ready() -> void:
 	for child_state in States.get_children():
