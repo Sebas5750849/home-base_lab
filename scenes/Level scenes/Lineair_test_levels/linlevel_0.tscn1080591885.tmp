@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://ncowwgti5yir"]
+[gd_scene load_steps=8 format=4 uid="uid://ncowwgti5yir"]
 
+[ext_resource type="Script" uid="uid://cgl21hdtuaik5" path="res://scripts/level_scripts/level_0.gd" id="1_8lfiw"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="1_i2hxu"]
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="2_kbrqr"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="3_8ig7q"]
@@ -10,6 +11,7 @@
 size = Vector2(105, 20)
 
 [node name="linlevel_0" type="Node2D"]
+script = ExtResource("1_8lfiw")
 
 [node name="Reset ma game" parent="." instance=ExtResource("2_kbrqr")]
 position = Vector2(-18, 215)

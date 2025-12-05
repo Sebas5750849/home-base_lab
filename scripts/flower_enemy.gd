@@ -41,9 +41,7 @@ func _physics_process(delta: float) -> void:
 func find_player() -> void:
 	if ray_cast.is_colliding():
 		var collider = ray_cast.get_collider()
-		print(collider)
 		if collider == player:
-			print('hi')
 			chase_player()
 		elif current_state == States.CHASE:
 			stop_chase()
@@ -93,8 +91,6 @@ func change_direction():
 	else:
 		# we are in the chasing state 
 		direction = (player.position - self.position).normalized()
-		print(player.position)
-		print(self.position)
 		
 		direction = sign(direction)
 		if direction.x == 1:
