@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://dtgestpeaioqq"]
+[gd_scene load_steps=7 format=4 uid="uid://dtgestpeaioqq"]
 
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="1_khjmu"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_snxwq"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_jclbv"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="4_0b18n"]
 [ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="5_3mkc7"]
+[ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="6_snxwq"]
 
-[node name="0_ tutorial level" type="Node2D"]
+[node name="linlevel_1" type="Node2D"]
 
 [node name="Reset ma game" parent="." instance=ExtResource("1_khjmu")]
 position = Vector2(-18, 215)
@@ -36,3 +37,15 @@ tile_set = ExtResource("4_0b18n")
 
 [node name="Next level" parent="." instance=ExtResource("5_3mkc7")]
 position = Vector2(3165, -348)
+
+[node name="flower_enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_snxwq")]
+position = Vector2(1343, 82)
+player = NodePath("../Player")
+
+[node name="flower_enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_snxwq")]
+position = Vector2(748, 84)
+player = NodePath("../Player")
+
+[node name="flower_enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_snxwq")]
+position = Vector2(119, 85)
+player = NodePath("../Player")

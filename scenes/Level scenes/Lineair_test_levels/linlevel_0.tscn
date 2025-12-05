@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvdd7"]
 size = Vector2(105, 20)
 
-[node name="0_ tutorial level" type="Node2D"]
+[node name="linlevel_0" type="Node2D"]
 
 [node name="Reset ma game" parent="." instance=ExtResource("2_kbrqr")]
 position = Vector2(-18, 215)

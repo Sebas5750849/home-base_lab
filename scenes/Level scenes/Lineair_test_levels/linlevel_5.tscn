@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_ky1cg"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_wm1rq"]
 
-[node name="Test level" type="Node2D"]
+[node name="linlevel_5" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
