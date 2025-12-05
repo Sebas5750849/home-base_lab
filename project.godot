@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="game_prototype"
-run/main_scene="uid://7y8ph3n8jmsb"
+run/main_scene="uid://ncowwgti5yir"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://bkcawwietdj2v"
 
