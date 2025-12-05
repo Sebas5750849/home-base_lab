@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://cbnty31cvslpm"]
+[gd_scene load_steps=7 format=4 uid="uid://cbnty31cvslpm"]
 
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="2_iunqk"]
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="2_myyxp"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="4_757ls"]
 [ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="4_e7dc5"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="5_757ls"]
+[ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="6_cexmj"]
 
 [node name="0_ tutorial level" type="Node2D"]
 
@@ -29,3 +30,7 @@ position = Vector2(9892, -1882)
 
 [node name="Player" parent="." instance=ExtResource("5_757ls")]
 position = Vector2(38, -40)
+
+[node name="flower_enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_cexmj")]
+position = Vector2(394, -13)
+player = NodePath("../Player")

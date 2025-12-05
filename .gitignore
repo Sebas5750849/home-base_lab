@@ -1,3 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Godot 4 editor files
+.godot/
+
+# Except project.godot (project settings)
+!.godot/project.godot
+
+# Export, cache, and temporary files
+export_presets.cfg
+*.import

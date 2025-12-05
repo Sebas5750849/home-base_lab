@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj8vqtv07i5xb"]
+
+[ext_resource type="Script" uid="uid://dhdlkna0oepvm" path="res://scripts/flower_enemy.gd" id="1_2arsj"]
+[ext_resource type="Texture2D" uid="uid://bw6w0a60vccnp" path="res://assets/flower_enemy.png" id="1_klqdu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2arsj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8roof"]
+atlas = ExtResource("1_klqdu")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjba5"]
+atlas = ExtResource("1_klqdu")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmu1l"]
+atlas = ExtResource("1_klqdu")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgdyn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8roof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjba5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmu1l")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="flower_enemy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_2arsj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2arsj")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lgdyn")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.6273996
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite"]
+target_position = Vector2(-53, 0)
+collision_mask = 4
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 9.282
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
