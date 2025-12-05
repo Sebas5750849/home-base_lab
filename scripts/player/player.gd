@@ -25,6 +25,9 @@ extends CharacterBody2D
 @onready var dash_timer = $Timers/DashTimer
 @onready var roll_timer = $Timers/RollTimer
 
+# levels
+@onready var current_level = $".."
+
 # External collision shapes
 var standing_shape = preload("res://resources/standing_collision_shape.tres")
 var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
@@ -95,11 +98,14 @@ var key_crouch = false
 var current_state = null
 var previous_state = null
 
+
+
+
 # ability booleans
-var can_dash: bool
-var can_wall_jump: bool
-var can_double_jump: bool
-var can_roll: bool
+var can_dash: bool = false
+var can_wall_jump: bool = false
+var can_double_jump: bool = false
+var can_roll: bool = false
 
 #region main game loop
 func _ready() -> void:
@@ -110,6 +116,7 @@ func _ready() -> void:
 	current_state = States.Idle
 	print("current_state = ", current_state)
 	print("previous_state = ", previous_state)
+	print(current_level.name)
 
 func _physics_process(delta: float) -> void:
 	get_input_state()
@@ -119,11 +126,11 @@ func _physics_process(delta: float) -> void:
 		roll_cooldown -= delta
 	
 	current_state.update_state(delta)
-		
+	
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	pass
+	check_level()
 
 func change_state(new_state):
 	if new_state != null:
@@ -181,16 +188,16 @@ func handle_mud():
 		change_state(States.Running)
 
 func handle_dash():
-	if key_dash and dash_cooldown <= 0:
+	if key_dash and dash_cooldown <= 0 and can_dash:
 		change_state(States.Dashing)
 
 func handle_roll():
-	if key_dash and roll_cooldown <= 0 and current_state == States.Crawling:
+	if key_dash and roll_cooldown <= 0 and current_state == States.Crawling and can_roll:
 		change_state(States.Rolling)
 
 func handle_wall_jump():
 	get_wall_direction()
-	if (key_jump or jump_buffer_timer.time_left > 0) and wall_direction != Vector2.ZERO:
+	if (key_jump or jump_buffer_timer.time_left > 0) and wall_direction != Vector2.ZERO and can_wall_jump:
 		print("Wall Jump")
 		change_state(States.WallJump)
 
@@ -207,7 +214,7 @@ func handle_jump():
 			jumps += 1
 			change_state(States.Jumping)
 	else:
-		if key_jump and 0 < jumps and jumps < MAX_JUMPS:
+		if key_jump and 0 < jumps and jumps < MAX_JUMPS and can_double_jump:
 			jumps += 1
 			change_state(States.Jumping)
 		elif coyote_timer.time_left > 0:
@@ -275,3 +282,21 @@ func movement_on_mud(acceleration: float = GROUND_ACCELERATION, deceleration: fl
 		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, deceleration)
 
 #endregion
+
+func check_level():
+	if current_level.name == "linlevel_1":
+		can_dash = true 
+	elif current_level.name == "linlevel_2":
+		can_dash = true 
+		can_wall_jump = true
+	elif current_level.name == "linlevel_3":
+		can_dash = true 
+		can_wall_jump = true
+		can_double_jump = true
+	elif current_level.name == "linlevel_4":
+		can_dash = true 
+		can_wall_jump = true
+		can_double_jump = true
+		can_roll = true
+	
+		
