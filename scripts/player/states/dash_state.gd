@@ -11,10 +11,10 @@ func enter_state():
 func exit_state():
 	Player.dash_cooldown = Player.DASH_COOLDOWN
 	Player.dash_timer = Player.DASH_DURATION
-	
+
 func draw():
 	pass
-	
+
 func update_state(delta):
 	Player.dash_timer -= delta
 	handle_animations()
