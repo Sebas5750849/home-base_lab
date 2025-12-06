@@ -98,9 +98,6 @@ var key_crouch = false
 var current_state = null
 var previous_state = null
 
-
-
-
 # ability booleans
 var can_dash: bool = false
 var can_wall_jump: bool = false
@@ -255,7 +252,8 @@ func is_on_ice():
 		return false
 	return collider.name == ("IceBlocks")
 
-func movement_on_ice(movement_direction_x, delta):
+func movement_on_ice():
+	var movement_direction_x = Input.get_axis("move_left", "move_right")
 	var target_speed = movement_direction_x * RUNNING_SPEED
 	
 	if movement_direction_x != 0:
@@ -304,5 +302,3 @@ func check_level():
 		can_wall_jump = true
 		can_double_jump = true
 		can_roll = true
-	
-		
