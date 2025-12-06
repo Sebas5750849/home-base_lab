@@ -148,7 +148,7 @@ func _on_jump_height_timer_timeout() -> void:
 	if !Input.is_action_pressed("jump") and velocity.y < 0:
 		velocity.y = max(velocity.y, -100)
 
-func get_wall_direction():	
+func get_wall_direction():
 	if rc_bottom_left.is_colliding():
 		wall_direction = Vector2.LEFT
 	elif rc_bottom_right.is_colliding():
@@ -182,6 +182,8 @@ func handle_ice():
 		change_state(States.Idle)
 
 func handle_mud():
+	if key_crouch:
+		return
 	if is_on_mud() and current_state != States.RunningMud:
 		change_state(States.RunningMud)
 	elif not is_on_mud() and (current_state == States.RunningMud):
@@ -262,7 +264,6 @@ func movement_on_ice(movement_direction_x, delta):
 		elif velocity.x > target_speed:
 			velocity.x = max(velocity.x - accel, target_speed)
 	else:
-		# decelerate toward zero
 		if velocity.x > 0:
 			velocity.x = max(velocity.x - decel, 0)
 		elif velocity.x < 0:
