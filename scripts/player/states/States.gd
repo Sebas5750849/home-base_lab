@@ -13,3 +13,4 @@ extends Node
 @onready var RunningIce = $RunningIce
 @onready var Sliding = $Sliding
 @onready var RunningMud = $RunningMud
+@onready var Grappling = $Grappling

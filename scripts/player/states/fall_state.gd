@@ -18,6 +18,7 @@ func update_state(delta):
 		Player.collision_shape.position.y = -22
 	Player.horizontal_movement(Player.AIR_ACCELERATION, Player.AIR_DECELERATION)
 	handle_jump_buffer()
+	Player.handle_grapple()
 	Player.handle_landing()
 	Player.handle_jump()
 	Player.handle_wall_jump()

@@ -13,6 +13,8 @@ extends CharacterBody2D
 @onready var rc_bottom_right = $Raycasts/WallJump/RCBottomRight
 @onready var rc_bottom_left = $Raycasts/WallJump/RCBottomLeft
 @onready var rc_down = $Raycasts/Terrain/RCDown
+@onready var rc_grapple = $Raycasts/Grapple/RCGrapple
+
 # states
 @onready var States = $StateMachine
 
@@ -65,6 +67,8 @@ const COYOTE_TIME: float = 0.1
 const JUMP_HEIGHT_TIME: float = 0.15
 const MAX_JUMPS: int = 2
 
+const ROPE = preload("res://scenes/rope.tscn")
+
 # variables
 var move_speed: float = RUNNING_SPEED
 var jump_speed: float = JUMP_VELOCITY
@@ -84,6 +88,9 @@ var jump_buffered: bool = false
 var accel = 3
 var decel = 2 
 
+var on_rope = false
+var ropebody
+
 # key inputs
 var key_jump = false
 var key_jump_pressed = false
@@ -93,6 +100,7 @@ var key_right = false
 var key_down = false
 var key_dash = false
 var key_crouch = false
+var key_grapple = false
 
 # states
 var current_state = null
@@ -117,6 +125,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	get_input_state()
+	
 	if dash_cooldown > 0:
 		dash_cooldown -= delta
 	if roll_cooldown > 0:
@@ -162,6 +171,7 @@ func get_input_state():
 	key_down = Input.is_action_pressed("ui_down")
 	key_dash = Input.is_action_just_pressed("dash")
 	key_crouch = Input.is_action_pressed("crouch")
+	key_grapple = Input.is_action_just_pressed("grapple")
 
 	if key_right: facing = 1
 	if key_left: facing = -1
@@ -239,12 +249,36 @@ func horizontal_movement(acceleration: float = GROUND_ACCELERATION, deceleration
 	else:
 		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, deceleration)
 
+func handle_grapple():
+	if key_grapple and on_rope:
+		print("DETACHING")
+		_remove_rope()
+		velocity.y = -JUMP_VELOCITY
+		change_state(States.Jumping)
+		return
+
+	if key_grapple and not on_rope and current_state != States.Grappling:
+		if rc_grapple.is_colliding():
+			var hit_point = rc_grapple.get_collision_point()
+
+			# Do NOT grapple walls or floors:
+			if hit_point.y < global_position.y - 10: 
+				print("STARTING GRAPPLE")
+				change_state(States.Grappling)
+			else:
+				print("Grapple hit a wall → ignored")
+
 func handle_crouch():
 	if is_on_floor() and key_crouch:
 		change_state(States.Crouching)
 
 func handle_flip_h():
 	sprite.flip_h = facing < 1
+	var x_target = 74  # original x distance of ray
+	if facing < 1:
+		rc_grapple.target_position.x = -x_target 
+	else:
+		rc_grapple.target_position.x = x_target 
 
 func is_on_ice():
 	var collider = rc_down.get_collider()
@@ -280,6 +314,26 @@ func movement_on_mud(acceleration: float = GROUND_ACCELERATION, deceleration: fl
 	else:
 		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, deceleration)
 
+func _use_rope():
+	if not rc_grapple.is_colliding():
+		return
+	on_rope = true
+	
+	var collidingPoint = rc_grapple.get_collision_point()
+	var playerPosition = global_position + Vector2(7,0)
+	
+	var ropeNode = ROPE.instantiate()
+	get_parent().add_child(ropeNode)
+	ropeNode.set_rope(playerPosition, collidingPoint)
+	
+	ropebody = ropeNode
+
+func _remove_rope():
+	on_rope = false
+	var rope = get_tree().get_first_node_in_group("rope")
+	if rope:
+		rope.queue_free()
+	ropebody = null
 #endregion
 
 func check_level():
