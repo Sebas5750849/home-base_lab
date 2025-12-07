@@ -17,6 +17,7 @@ func update_state(delta):
 	Player.handle_gravity(delta)
 	Player.horizontal_movement()
 	Player.handle_jump()
+	Player.handle_grapple()
 	handle_jump_to_fall()
 	Player.handle_wall_jump()
 	Player.handle_dash()
