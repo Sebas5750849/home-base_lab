@@ -261,7 +261,6 @@ func handle_grapple():
 		if rc_grapple.is_colliding():
 			var hit_point = rc_grapple.get_collision_point()
 
-			# Do NOT grapple walls or floors:
 			if hit_point.y < global_position.y - 10: 
 				print("STARTING GRAPPLE")
 				change_state(States.Grappling)

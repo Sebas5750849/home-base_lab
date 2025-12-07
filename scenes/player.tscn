@@ -433,7 +433,7 @@ script = ExtResource("16_a8ls1")
 script = ExtResource("17_qfm1y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-3, 9)
+position = Vector2(1, -22)
 zoom = Vector2(2, 2)
 
 [connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
