@@ -27,4 +27,4 @@ func update_state(delta):
 
 func handle_animations():
 	$"../../AnimatedSprite2D".play("jump")
-	#Player.handle_flip_h()
+	Player.handle_flip_h()
