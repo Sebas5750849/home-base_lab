@@ -102,10 +102,10 @@ var previous_state = null
 
 
 # ability booleans
-var can_dash: bool = false
-var can_wall_jump: bool = false
-var can_double_jump: bool = false
-var can_roll: bool = false
+var can_dash: bool = true
+var can_wall_jump: bool = true
+var can_double_jump: bool = true
+var can_roll: bool = true
 
 #region main game loop
 func _ready() -> void:
@@ -117,6 +117,13 @@ func _ready() -> void:
 	print("current_state = ", current_state)
 	print("previous_state = ", previous_state)
 	print(current_level.name)
+	
+	if RoomChangeGlobal.activate:
+		print("activated")
+		global_position = RoomChangeGlobal.player_pos
+		if RoomChangeGlobal.player_jump_on_enter:
+			velocity.y = JUMP_VELOCITY
+		RoomChangeGlobal.activate = false
 
 func _physics_process(delta: float) -> void:
 	get_input_state()
