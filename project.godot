@@ -15,6 +15,10 @@ run/main_scene="uid://ncowwgti5yir"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://bkcawwietdj2v"
 
+[autoload]
+
+RoomChangeGlobal="*res://scenes/Test_Levels_Mike/Room_change_global.gd"
+
 [global_group]
 
 Player=""
