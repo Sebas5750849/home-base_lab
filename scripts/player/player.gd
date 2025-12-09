@@ -33,45 +33,8 @@ extends CharacterBody2D
 # External collision shapes
 var standing_shape = preload("res://resources/standing_collision_shape.tres")
 var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
-
-# constants
-const RUNNING_SPEED: float = 200
-const JUMP_VELOCITY: float = -400
-# const GRAVITY_JUMP: float = 600 # ProjectSettings.get_setting("physics/2d/default_gravity") = 980.0 by default
-const GRAVITY_JUMP: float = 1000 # ProjectSettings.get_setting("physics/2d/default_gravity") = 980.0 by default
-
-
-const GRAVITY_FALL: float = 700
-# const DASH_SPEED: float = 700
-const DASH_SPEED: float = 600
-const ROLL_SPEED: float = 200
-const CROUCH_SPEED_MULTIPLIER: float = 0.35
-const MUD_SPEED_MULTIPLIER = 0.3
-const WALL_JUMP_VELOCITY: float = -400
-const WALL_JUMP_H_SPEED: float = 200 # speed with which you jump away from the wall
-const WALL_JUMP_Y_SPEED_PEAK: float = 0 # vertical speed at which wall jump will transition to falling
-
-const GROUND_ACCELERATION: float = 40
-const GROUND_DECELERATION: float = 50
-const AIR_ACCELERATION: float = 15
-const AIR_DECELERATION: float = 20
-const WALL_KICK_ACCELERATION: float = 4
-const WALL_KICK_DECELERATION: float = 5
-
-const DASH_DURATION:float = 0.0001
-const DASH_COOLDOWN: float = 1
-const ROLL_DURATION: float = 0.4
-const ROLL_COOLDOWN: float = 1
-const JUMP_BUFFER_TIME: float = 0.15
-const COYOTE_TIME: float = 0.1
-const JUMP_HEIGHT_TIME: float = 0.15
-const MAX_JUMPS: int = 2
-
 const ROPE = preload("res://scenes/rope.tscn")
 
-# variables
-var move_speed: float = RUNNING_SPEED
-var jump_speed: float = JUMP_VELOCITY
 var move_direction_x = 0
 var jumps: int = 0
 var wall_direction: Vector2 = Vector2.ZERO
@@ -107,10 +70,6 @@ var current_state = null
 var previous_state = null
 
 # ability booleans
-var can_dash: bool = true
-var can_wall_jump: bool = true
-var can_double_jump: bool = true
-var can_roll: bool = true
 
 #region main game loop
 func _ready() -> void:
@@ -127,7 +86,7 @@ func _ready() -> void:
 		print("activated")
 		global_position = RoomChangeGlobal.player_pos
 		if RoomChangeGlobal.player_jump_on_enter:
-			velocity.y = JUMP_VELOCITY
+			velocity.y = PlayerVar.JUMP_VELOCITY
 		RoomChangeGlobal.activate = false
 
 func _physics_process(delta: float) -> void:
@@ -204,20 +163,20 @@ func handle_mud():
 		change_state(States.Running)
 
 func handle_dash():
-	if key_dash and dash_cooldown <= 0 and can_dash:
+	if key_dash and dash_cooldown <= 0 and PlayerVar.can_dash:
 		change_state(States.Dashing)
 
 func handle_roll():
-	if key_dash and roll_cooldown <= 0 and current_state == States.Crawling and can_roll:
+	if key_dash and roll_cooldown <= 0 and current_state == States.Crawling and PlayerVar.can_roll:
 		change_state(States.Rolling)
 
 func handle_wall_jump():
 	get_wall_direction()
-	if (key_jump or jump_buffer_timer.time_left > 0) and wall_direction != Vector2.ZERO and can_wall_jump:
+	if (key_jump or jump_buffer_timer.time_left > 0) and wall_direction != Vector2.ZERO and PlayerVar.can_wall_jump:
 		print("Wall Jump")
 		change_state(States.WallJump)
 
-func handle_gravity(delta, gravity: float = GRAVITY_JUMP):
+func handle_gravity(delta, gravity: float = PlayerVar.GRAVITY_JUMP):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -230,18 +189,18 @@ func handle_jump():
 			jumps += 1
 			change_state(States.Jumping)
 	else:
-		if key_jump and 0 < jumps and jumps < MAX_JUMPS and can_double_jump:
+		if key_jump and 0 < PlayerVar.jumps and PlayerVar.jumps < PlayerVar.MAX_JUMPS and PlayerVar.can_double_jump:
 			jumps += 1
 			change_state(States.Jumping)
 		elif coyote_timer.time_left > 0:
-			if key_jump and jumps < MAX_JUMPS:
+			if key_jump and jumps < PlayerVar.MAX_JUMPS:
 				coyote_timer.stop()
 				jumps += 1
 				change_state(States.Jumping)
 
 func handle_falling():
 	if not is_on_floor():
-		coyote_timer.start(COYOTE_TIME)
+		coyote_timer.start(PlayerVar.COYOTE_TIME)
 		change_state(States.Falling)
 
 func handle_landing():
@@ -249,18 +208,18 @@ func handle_landing():
 		jumps = 0
 		change_state(States.Idle)
 
-func horizontal_movement(acceleration: float = GROUND_ACCELERATION, deceleration: float = GROUND_DECELERATION, multiplier: float = 1):
+func horizontal_movement(acceleration: float = PlayerVar.GROUND_ACCELERATION, deceleration: float = PlayerVar.GROUND_DECELERATION, multiplier: float = 1):
 	move_direction_x = Input.get_axis("move_left", "move_right")
 	if move_direction_x != 0:
-		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, acceleration)
+		velocity.x = move_toward(velocity.x, move_direction_x * PlayerVar.move_speed * multiplier, acceleration)
 	else:
-		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, deceleration)
+		velocity.x = move_toward(velocity.x, move_direction_x * PlayerVar.move_speed * multiplier, deceleration)
 
 func handle_grapple():
 	if key_grapple and on_rope:
 		print("DETACHING")
 		_remove_rope()
-		velocity.y = -JUMP_VELOCITY
+		velocity.y = -PlayerVar.JUMP_VELOCITY
 		change_state(States.Jumping)
 		return
 
@@ -294,7 +253,7 @@ func is_on_ice():
 
 func movement_on_ice():
 	var movement_direction_x = Input.get_axis("move_left", "move_right")
-	var target_speed = movement_direction_x * RUNNING_SPEED
+	var target_speed = movement_direction_x * PlayerVar.RUNNING_SPEED
 	
 	if movement_direction_x != 0:
 		if velocity.x < target_speed:
@@ -313,12 +272,12 @@ func is_on_mud():
 		return false
 	return collider.name == ("MudBlocks")
 
-func movement_on_mud(acceleration: float = GROUND_ACCELERATION, deceleration: float = GROUND_DECELERATION, multiplier: float = MUD_SPEED_MULTIPLIER):
+func movement_on_mud(acceleration: float = PlayerVar.GROUND_ACCELERATION, deceleration: float = PlayerVar.GROUND_DECELERATION, multiplier: float = PlayerVar.MUD_SPEED_MULTIPLIER):
 	move_direction_x = Input.get_axis("move_left", "move_right")
 	if move_direction_x != 0:
-		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, acceleration)
+		velocity.x = move_toward(velocity.x, move_direction_x * PlayerVar.move_speed * multiplier, acceleration)
 	else:
-		velocity.x = move_toward(velocity.x, move_direction_x * move_speed * multiplier, deceleration)
+		velocity.x = move_toward(velocity.x, move_direction_x * PlayerVar.move_speed * multiplier, deceleration)
 
 func _use_rope():
 	if not rc_grapple.is_colliding():
@@ -344,21 +303,10 @@ func _remove_rope():
 
 func check_level():
 	if current_level.name == "linlevel_1":
-		can_dash = true 
+		PlayerVar.can_dash = true 
 	elif current_level.name == "linlevel_2":
-		can_dash = true 
-		can_wall_jump = true
+		PlayerVar.can_wall_jump = true
 	elif current_level.name == "linlevel_3":
-		can_dash = true 
-		can_wall_jump = true
-		can_double_jump = true
+		PlayerVar.can_double_jump = true
 	elif current_level.name == "linlevel_4":
-		can_dash = true 
-		can_wall_jump = true
-		can_double_jump = true
-		can_roll = true
-	elif current_level.name == "linlevel_5":
-		can_dash = true 
-		can_wall_jump = true
-		can_double_jump = true
-		can_roll = true
+		PlayerVar.can_roll = true
