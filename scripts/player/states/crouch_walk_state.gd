@@ -18,7 +18,7 @@ func draw():
 	
 func update_state(delta):
 	Player.handle_falling()
-	Player.horizontal_movement(Player.GROUND_ACCELERATION, Player.GROUND_DECELERATION, Player.CROUCH_SPEED_MULTIPLIER)
+	Player.horizontal_movement(PlayerVar.GROUND_ACCELERATION, PlayerVar.GROUND_DECELERATION, PlayerVar.CROUCH_SPEED_MULTIPLIER)
 	return_to_idle()
 	handle_animations()
 	return_to_crouch()

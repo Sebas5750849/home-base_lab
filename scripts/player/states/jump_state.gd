@@ -4,8 +4,8 @@ extends PlayerState
 
 func enter_state():
 	Name = "Jumping"
-	Player.velocity.y = Player.jump_speed
-	Player.jump_height_timer.start(Player.JUMP_HEIGHT_TIME)
+	Player.velocity.y = PlayerVar.jump_speed
+	Player.jump_height_timer.start(PlayerVar.JUMP_HEIGHT_TIME)
 	
 func exit_state():
 	pass

@@ -189,7 +189,7 @@ func handle_jump():
 			jumps += 1
 			change_state(States.Jumping)
 	else:
-		if key_jump and 0 < PlayerVar.jumps and PlayerVar.jumps < PlayerVar.MAX_JUMPS and PlayerVar.can_double_jump:
+		if key_jump and 0 < jumps and jumps < PlayerVar.MAX_JUMPS and PlayerVar.can_double_jump:
 			jumps += 1
 			change_state(States.Jumping)
 		elif coyote_timer.time_left > 0:
@@ -305,8 +305,20 @@ func check_level():
 	if current_level.name == "linlevel_1":
 		PlayerVar.can_dash = true 
 	elif current_level.name == "linlevel_2":
+		PlayerVar.can_dash = true 
 		PlayerVar.can_wall_jump = true
 	elif current_level.name == "linlevel_3":
+		PlayerVar.can_dash = true 
+		PlayerVar.can_wall_jump = true
 		PlayerVar.can_double_jump = true
 	elif current_level.name == "linlevel_4":
+		PlayerVar.can_dash = true 
+		PlayerVar.can_wall_jump = true
+		PlayerVar.can_double_jump = true
 		PlayerVar.can_roll = true
+	else:
+		PlayerVar.can_dash = true 
+		PlayerVar.can_wall_jump = true
+		PlayerVar.can_double_jump = true
+		PlayerVar.can_roll = true
+		

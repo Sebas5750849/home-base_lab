@@ -4,13 +4,13 @@ extends PlayerState
 
 func enter_state():
 	Name = "Dashing"
-	Player.velocity.x = Player.facing * Player.DASH_SPEED
+	Player.velocity.x = Player.facing * PlayerVar.DASH_SPEED
 	Player.velocity.y = 0
-	Player.dash_timer = Player.DASH_DURATION
+	Player.dash_timer = PlayerVar.DASH_DURATION
 	
 func exit_state():
-	Player.dash_cooldown = Player.DASH_COOLDOWN
-	Player.dash_timer = Player.DASH_DURATION
+	Player.dash_cooldown = PlayerVar.DASH_COOLDOWN
+	Player.dash_timer = PlayerVar.DASH_DURATION
 
 func draw():
 	pass
