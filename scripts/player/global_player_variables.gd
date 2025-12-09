@@ -34,6 +34,8 @@ const COYOTE_TIME: float = 0.1
 const JUMP_HEIGHT_TIME: float = 0.15
 const MAX_JUMPS: int = 2
 
+const MAX_HEALTH: float = 100
+
 
 
 var move_speed: float = RUNNING_SPEED
@@ -46,3 +48,8 @@ var can_roll: bool
 
 var y_velocity: float
 var x_velocity: float
+
+var death_count: int
+var death_position: Dictionary
+
+var health: float
