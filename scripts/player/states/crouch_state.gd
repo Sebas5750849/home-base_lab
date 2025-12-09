@@ -11,8 +11,9 @@ func enter_state():
 func exit_state():
 	if Player.current_state == States.Crawling:
 		return
-	Player.collision_shape.shape = Player.standing_shape
-	Player.collision_shape.position.y = -22
+	if above_head_is_clear():
+		Player.collision_shape.shape = Player.standing_shape
+		Player.collision_shape.position.y = -22
 	
 func draw():
 	pass

@@ -13,7 +13,7 @@ func update_state(delta):
 	Player.handle_falling()
 	Player.handle_jump()
 	Player.handle_crouch()
-	Player.movement_on_ice(Player.move_direction_x, delta)
+	Player.movement_on_ice()
 	Player.handle_ice()
 	handle_animations()
 	handle_idle()
