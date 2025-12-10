@@ -76,10 +76,13 @@ var previous_state = null
 
 #region main game loop
 func _ready() -> void:
+	# Make sure raycasts dont collide with player
 	rc_bottom_left.add_exception(self)
 	rc_bottom_right.add_exception(self)
 	rc_down.add_exception(self)
 	rc_grapple.add_exception(self)
+	crouch_ray_1.add_exception(self)
+	crouch_ray_2.add_exception(self)
 	
 	for child_state in States.get_children():
 		child_state.States = States
@@ -242,7 +245,7 @@ func handle_grapple():
 			print("Starting grapple")
 			change_state(States.Grappling)
 	
-	elif on_rope and (rc_bottom_left.is_colliding() or rc_bottom_right.is_colliding() or rc_down.is_colliding()):
+	elif on_rope and (rc_bottom_left.is_colliding() or rc_bottom_right.is_colliding() or rc_down.is_colliding() or crouch_ray_1.is_colliding() or crouch_ray_2.is_colliding()):
 		_remove_rope()
 		change_state(States.Falling)
 		return
