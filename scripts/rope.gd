@@ -10,7 +10,8 @@ func _ready():
 	add_to_group("rope")
 
 func _physics_process(delta):
-	rotation_degrees = 180 + max_swing_degree * sin(swing_time) * swing_direction
+		
+	rotation_degrees = 180 + max_swing_degree * sin(swing_time)
 	swing_time += delta * swing_speed * PI * 2
 
 func set_rope(startPosition, endPosition, facing_right := true):
@@ -21,12 +22,14 @@ func set_rope(startPosition, endPosition, facing_right := true):
 	rotation_degrees += 90
 	
 	if facing_right:
-		swing_direction = 1
-		swing_time = PI/2
+		swing_direction = 1.0
 	else:
-		swing_direction = -1
-		swing_time = PI/2
-
+		swing_direction = -1.0
+	
+	var start_angle_degrees = 180 + max_swing_degree * swing_direction
+	swing_time = asin((start_angle_degrees - 180) / max_swing_degree)
+	rotation_degrees = start_angle_degrees
+	
 	for i in int(distance / tilesize) + 1:
 		var newRopeTile = $Sprite2D.duplicate()
 		add_child(newRopeTile)
