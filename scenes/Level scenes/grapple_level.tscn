@@ -22,7 +22,7 @@ tile_map_data = PackedByteArray("AAD9/wIAAAABABsAAAD+/wIAAAABABsAAAD//wIAAAABABs
 tile_set = ExtResource("2_08xtn")
 
 [node name="Player" parent="." instance=ExtResource("3_tp4ch")]
-position = Vector2(1639, -314)
+position = Vector2(-783, -6)
 
 [node name="Labels" type="Node2D" parent="."]
 
@@ -67,19 +67,19 @@ text = "You found a secret :O
 
 You win nothing :>"
 
-[node name="Label7" type="Label" parent="Labels"]
-offset_left = -522.0
-offset_top = -392.0
-offset_right = -428.0
-offset_bottom = -369.0
-text = "You did it :D"
-
 [node name="Label6" type="Label" parent="Labels"]
 offset_left = 618.0
 offset_top = -356.0
 offset_right = 766.0
 offset_bottom = -333.0
 text = "Just keep swinging!"
+
+[node name="Label7" type="Label" parent="Labels"]
+offset_left = -522.0
+offset_top = -392.0
+offset_right = -428.0
+offset_bottom = -369.0
+text = "You did it :D"
 
 [node name="Label8" type="Label" parent="Labels"]
 offset_left = 1446.0
