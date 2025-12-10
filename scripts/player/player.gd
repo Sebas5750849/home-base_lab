@@ -302,7 +302,7 @@ func _remove_rope():
 #endregion
 
 func check_level():
-	if current_level.name == "linlevel_1":
+	if current_level.name == "linlevel_1" or current_level.name == "linlevel_0" :
 		PlayerVar.can_dash = true 
 	elif current_level.name == "linlevel_2":
 		PlayerVar.can_dash = true 
