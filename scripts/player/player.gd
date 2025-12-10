@@ -33,6 +33,8 @@ extends CharacterBody2D
 # External collision shapes
 var standing_shape = preload("res://resources/standing_collision_shape.tres")
 var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
+
+# External scenes
 const ROPE = preload("res://scenes/rope.tscn")
 
 var move_direction_x = 0
@@ -216,11 +218,17 @@ func horizontal_movement(acceleration: float = PlayerVar.GROUND_ACCELERATION, de
 		velocity.x = move_toward(velocity.x, move_direction_x * PlayerVar.move_speed * multiplier, deceleration)
 
 func handle_grapple():
-	if key_grapple and on_rope:
+	if key_jump and on_rope:
 		print("DETACHING")
 		_remove_rope()
 		velocity.y = -PlayerVar.JUMP_VELOCITY
 		change_state(States.Jumping)
+		return
+	
+	if key_grapple and on_rope:
+		print("DETACHING")
+		_remove_rope()
+		change_state(States.Falling)
 		return
 
 	if key_grapple and not on_rope and current_state != States.Grappling:
