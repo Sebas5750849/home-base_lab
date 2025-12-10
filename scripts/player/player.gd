@@ -79,6 +79,7 @@ func _ready() -> void:
 	rc_bottom_left.add_exception(self)
 	rc_bottom_right.add_exception(self)
 	rc_down.add_exception(self)
+	rc_grapple.add_exception(self)
 	
 	for child_state in States.get_children():
 		child_state.States = States
@@ -301,7 +302,7 @@ func _use_rope():
 
 	var ropeNode = ROPE.instantiate()
 	get_parent().add_child(ropeNode)
-	ropeNode.set_rope(playerPosition, collidingPoint)
+	ropeNode.set_rope(playerPosition, collidingPoint, facing > 0)
 	ropebody = ropeNode
 
 func _remove_rope():
