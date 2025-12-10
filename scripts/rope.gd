@@ -14,8 +14,9 @@ func _ready():
 	add_to_group("rope")
 
 func _physics_process(delta):
-	swing_time += delta * swing_speed * PI * 2  # full swing cycle
 	rotation_degrees = 180 + max_swing_degree * sin(swing_time)
+	swing_time += delta * swing_speed * PI * 2  # full swing cycle
+	#rotation_degrees = 180 + max_swing_degree * sin(swing_time)
 	#rotation_degrees += change_rotation * swing_speed * delta
 	#
 	#if rotation_degrees >= 180 + max_swing_degree:
@@ -24,8 +25,8 @@ func _physics_process(delta):
 		#change_rotation = 1
 	
 func set_rope(startPosition, endPosition):
+	swing_time = -PI / 2
 	var distance = startPosition.distance_to(endPosition)
-	
 	global_position = endPosition
 	
 	look_at(startPosition)
@@ -37,7 +38,7 @@ func set_rope(startPosition, endPosition):
 	for i in int(distance / tilesize) + 1:
 		var newRopeTile = $Sprite2D.duplicate()
 		add_child(newRopeTile)
-		newRopeTile.position = Vector2(0, -(i *16))
+		newRopeTile.position = Vector2(0, -(i * tilesize))
 		
 	var marker_node = Marker2D.new()
 	marker_node.name = "player_position_marker"
