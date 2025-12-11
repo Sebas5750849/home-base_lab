@@ -325,6 +325,8 @@ func _remove_rope():
 #endregion
 
 func check_level():
+	if current_level.name == "linlevel_0":
+		return
 	if current_level.name == "linlevel_1":
 		PlayerVar.can_dash = true 
 	elif current_level.name == "linlevel_2":
@@ -359,7 +361,8 @@ func update_heart_display():
 
 func check_dead():
 	if PlayerVar.health <= 0:
-		get_tree().reload_current_scene()
+		# get_tree().reload_current_scene()
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Level scenes/Lineair_test_levels/linlevel_0.tscn")
 		PlayerVar.death_count += 1
 		PlayerVar.health = PlayerVar.MAX_HEALTH
 
