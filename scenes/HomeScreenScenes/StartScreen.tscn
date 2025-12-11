@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg8ojy1klpafa"]
+
+[ext_resource type="Texture2D" uid="uid://clhe8y3bacsph" path="res://assets/crashed_space_ship.png" id="1_8jnx0"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrashedSpaceShip" type="Sprite2D" parent="."]
+position = Vector2(588, 324)
+texture = ExtResource("1_8jnx0")

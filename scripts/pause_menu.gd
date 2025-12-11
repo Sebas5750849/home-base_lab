@@ -10,6 +10,7 @@ func resume():
 func pause():
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
+	$PanelContainer/VBoxContainer/Resume.grab_focus()
 
 func testEsc():
 	if Input.is_action_just_pressed("pause") and !get_tree().paused:
