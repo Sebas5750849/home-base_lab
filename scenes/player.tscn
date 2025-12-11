@@ -358,7 +358,7 @@ target_position = Vector2(0, 33)
 
 [node name="RCGrapple" type="RayCast2D" parent="Raycasts/Grapple"]
 position = Vector2(0, -22)
-target_position = Vector2(74, -125)
+target_position = Vector2(150, -150)
 
 [node name="CrouchRaycast1" type="RayCast2D" parent="."]
 position = Vector2(-3, -3)
