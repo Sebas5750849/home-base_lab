@@ -38,14 +38,14 @@ tile_set = ExtResource("4_0b18n")
 [node name="Next level" parent="." instance=ExtResource("5_3mkc7")]
 position = Vector2(3165, -348)
 
-[node name="flower_enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_snxwq")]
+[node name="flower_enemy" parent="." node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("6_snxwq")]
 position = Vector2(1343, 82)
 player = NodePath("../Player")
 
-[node name="flower_enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_snxwq")]
+[node name="flower_enemy2" parent="." node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("6_snxwq")]
 position = Vector2(748, 84)
 player = NodePath("../Player")
 
-[node name="flower_enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_snxwq")]
+[node name="flower_enemy3" parent="." node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("6_snxwq")]
 position = Vector2(119, 85)
 player = NodePath("../Player")

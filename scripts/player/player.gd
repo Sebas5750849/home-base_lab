@@ -82,13 +82,26 @@ func _ready() -> void:
 	print("previous_state = ", previous_state)
 	print(current_level.name)
 	
+	if not PlayerVar.lock_starting_level:
+		PlayerVar.starting_level = current_level
+	
+	#region switching levels
 	if RoomChangeGlobal.activate:
 		print("activated")
 		global_position = RoomChangeGlobal.player_pos
 		if RoomChangeGlobal.player_jump_on_enter:
 			velocity.y = PlayerVar.JUMP_VELOCITY
 		RoomChangeGlobal.activate = false
-
+	#endregion
+	
+	#region initialize health "bar"	
+	var hearts_parent = $HealthBar/HBoxContainer
+	PlayerVar.hearts_list = []
+	for child in hearts_parent.get_children():
+		PlayerVar.hearts_list.append(child)
+	PlayerVar.update_heart_display()
+	#endregion
+		
 func _physics_process(delta: float) -> void:
 	get_input_state()
 	
@@ -98,11 +111,14 @@ func _physics_process(delta: float) -> void:
 		roll_cooldown -= delta
 	
 	current_state.update_state(delta)
-	
+		
 	move_and_slide()
 
 func _process(delta: float) -> void:
 	check_level()
+	if Input.is_action_just_pressed("damage"):
+		PlayerVar.take_damage()
+		PlayerVar.check_dead()
 
 func change_state(new_state):
 	if new_state != null:
@@ -322,3 +338,5 @@ func check_level():
 		PlayerVar.can_double_jump = true
 		PlayerVar.can_roll = true
 		
+func enemy_collision():
+	pass

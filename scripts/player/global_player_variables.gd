@@ -34,7 +34,7 @@ const COYOTE_TIME: float = 0.1
 const JUMP_HEIGHT_TIME: float = 0.15
 const MAX_JUMPS: int = 2
 
-const MAX_HEALTH: float = 100
+const MAX_HEALTH: float = 5
 
 
 
@@ -49,7 +49,32 @@ var can_roll: bool
 var y_velocity: float
 var x_velocity: float
 
+var is_dead: bool = false
 var death_count: int
 var death_position: Dictionary
 
-var health: float
+var health: float = MAX_HEALTH
+
+var hearts_list: Array[TextureRect]
+
+var starting_level: Node2D
+var lock_starting_level: bool = false
+
+func take_damage():
+	if health > 0:
+		health -= 1
+		update_heart_display()
+	print(health)
+	
+		
+func update_heart_display():
+	for i in range(hearts_list.size()):
+		hearts_list[i].visible = i < health
+		
+
+func check_dead():
+	if health <= 0:
+		get_tree().reload_current_scene()
+		death_count += 1
+		health = MAX_HEALTH
+		
