@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 
 @onready var collision_shape = $CollisionShape2D
+@onready var area_2d = $Area2D
 
 # raycasts
 @onready var crouch_ray_1 = $CrouchRaycast1
@@ -26,6 +27,7 @@ extends CharacterBody2D
 @onready var roll_colldown_timer = $Timers/RollCooldownTimer
 @onready var dash_timer = $Timers/DashTimer
 @onready var roll_timer = $Timers/RollTimer
+@onready var invincibility_timer = $Timers/InvinsibilityTimer
 
 # levels
 @onready var current_level = $".."
@@ -48,6 +50,8 @@ var roll_direction: float = 1
 var can_coyote_jump: bool = false
 var jump_buffered: bool = false
 
+var invincibility_time: float = 1
+
 var accel = 3
 var decel = 2 
 
@@ -68,6 +72,8 @@ var key_grapple = false
 # states
 var current_state = null
 var previous_state = null
+
+var is_in_danger: bool = false
 
 # ability booleans
 
@@ -99,8 +105,11 @@ func _ready() -> void:
 	PlayerVar.hearts_list = []
 	for child in hearts_parent.get_children():
 		PlayerVar.hearts_list.append(child)
-	PlayerVar.update_heart_display()
+	update_heart_display()
 	#endregion
+	
+	PlayerVar.can_take_damage = true
+	is_in_danger = false
 		
 func _physics_process(delta: float) -> void:
 	get_input_state()
@@ -116,9 +125,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	check_level()
-	if Input.is_action_just_pressed("damage"):
-		PlayerVar.take_damage()
-		PlayerVar.check_dead()
+	check_dead()
 
 func change_state(new_state):
 	if new_state != null:
@@ -337,6 +344,24 @@ func check_level():
 		PlayerVar.can_wall_jump = true
 		PlayerVar.can_double_jump = true
 		PlayerVar.can_roll = true
+
+func take_damage():
+	if PlayerVar.health > 0:
+		PlayerVar.health -= 1
+		update_heart_display()
+	print(PlayerVar.health)
+	
 		
-func enemy_collision():
-	pass
+func update_heart_display():
+	for i in range(PlayerVar.hearts_list.size()):
+		PlayerVar.hearts_list[i].visible = i < PlayerVar.health
+		
+
+func check_dead():
+	if PlayerVar.health <= 0:
+		get_tree().reload_current_scene()
+		PlayerVar.death_count += 1
+		PlayerVar.health = PlayerVar.MAX_HEALTH
+
+func _on_invinsibility_timer_timeout() -> void:
+	PlayerVar.can_take_damage = true

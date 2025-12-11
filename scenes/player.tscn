@@ -323,7 +323,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 6
 collision_layer = 7
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -334,6 +334,13 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
+shape = ExtResource("3_qhqgy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -22)
 shape = ExtResource("3_qhqgy")
 
@@ -391,7 +398,8 @@ one_shot = true
 
 [node name="RollTimer" type="Timer" parent="Timers"]
 
-[node name="Timer" type="Timer" parent="Timers"]
+[node name="InvinsibilityTimer" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_3v2ag")
@@ -477,6 +485,8 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" parent="HealthBar/HBoxContainer/Heart5" instance=ExtResource("18_fulsm")]
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timers/CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="Timers/JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="Timers/JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
+[connection signal="timeout" from="Timers/InvinsibilityTimer" to="." method="_on_invinsibility_timer_timeout"]

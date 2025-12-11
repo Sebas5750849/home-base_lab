@@ -23,6 +23,7 @@ func _on_resume_pressed() -> void:
 func _on_restart_pressed() -> void:
 	resume()
 	get_tree().reload_current_scene()
+	PlayerVar.health = PlayerVar.MAX_HEALTH
 
 func _on_options_pressed() -> void:
 	resume()
