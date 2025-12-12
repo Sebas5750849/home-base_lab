@@ -10,7 +10,6 @@ func resume():
 func pause():
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
-	$PanelContainer/VBoxContainer/Resume.grab_focus()
 
 func testEsc():
 	if Input.is_action_just_pressed("pause") and !get_tree().paused:
@@ -24,7 +23,6 @@ func _on_resume_pressed() -> void:
 func _on_restart_pressed() -> void:
 	resume()
 	get_tree().reload_current_scene()
-	PlayerVar.health = PlayerVar.MAX_HEALTH
 
 func _on_options_pressed() -> void:
 	resume()

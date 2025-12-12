@@ -33,9 +33,8 @@ const JUMP_BUFFER_TIME: float = 0.15
 const COYOTE_TIME: float = 0.1
 const JUMP_HEIGHT_TIME: float = 0.15
 const MAX_JUMPS: int = 2
-const INVINCIBILITY_TIME: float = 1
 
-const MAX_HEALTH: float = 5
+const MAX_HEALTH: float = 100
 
 
 
@@ -50,18 +49,7 @@ var can_roll: bool
 var y_velocity: float
 var x_velocity: float
 
-var is_dead: bool = false
 var death_count: int
 var death_position: Dictionary
 
-var health: float = MAX_HEALTH
-var can_take_damage: bool = true
-var hearts_list: Array[TextureRect]
-
-var starting_level: Node2D
-var lock_starting_level: bool = false
-
-
-
-
-		
+var health: float

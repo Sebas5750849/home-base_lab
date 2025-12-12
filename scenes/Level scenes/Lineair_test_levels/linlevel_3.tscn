@@ -9,7 +9,7 @@
 [node name="linlevel_3" type="Node2D"]
 
 [node name="Reset ma game" parent="." instance=ExtResource("1_ggehl")]
-position = Vector2(-18, 200)
+position = Vector2(-18, 215)
 collision_mask = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
