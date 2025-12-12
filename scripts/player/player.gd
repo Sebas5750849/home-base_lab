@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 
 @onready var collision_shape = $CollisionShape2D
+@onready var area_2d = $Area2D
 
 # raycasts
 @onready var crouch_ray_1 = $CrouchRaycast1
@@ -26,6 +27,7 @@ extends CharacterBody2D
 @onready var roll_colldown_timer = $Timers/RollCooldownTimer
 @onready var dash_timer = $Timers/DashTimer
 @onready var roll_timer = $Timers/RollTimer
+@onready var invincibility_timer = $Timers/InvinsibilityTimer
 
 # levels
 @onready var current_level = $".."
@@ -33,6 +35,8 @@ extends CharacterBody2D
 # External collision shapes
 var standing_shape = preload("res://resources/standing_collision_shape.tres")
 var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
+
+# External scenes
 const ROPE = preload("res://scenes/rope.tscn")
 
 var move_direction_x = 0
@@ -47,6 +51,8 @@ var roll_direction: float = 1
 
 var can_coyote_jump: bool = false
 var jump_buffered: bool = false
+
+var invincibility_time: float = 1
 
 var accel = 3
 var decel = 2 
@@ -69,10 +75,23 @@ var key_grapple = false
 var current_state = null
 var previous_state = null
 
+#<<<<<<< HEAD
+var is_in_danger: bool = false
+#=======
+#>>>>>>> be20a8650aa7ec21cacfa53bb305890bdbb57d78
+
 # ability booleans
 
 #region main game loop
 func _ready() -> void:
+	# Make sure raycasts dont collide with player
+	rc_bottom_left.add_exception(self)
+	rc_bottom_right.add_exception(self)
+	rc_down.add_exception(self)
+	rc_grapple.add_exception(self)
+	crouch_ray_1.add_exception(self)
+	crouch_ray_2.add_exception(self)
+	
 	for child_state in States.get_children():
 		child_state.States = States
 		child_state.Player = self
@@ -82,13 +101,29 @@ func _ready() -> void:
 	print("previous_state = ", previous_state)
 	print(current_level.name)
 	
+	if not PlayerVar.lock_starting_level:
+		PlayerVar.starting_level = current_level
+	
+	#region switching levels
 	if RoomChangeGlobal.activate:
 		print("activated")
 		global_position = RoomChangeGlobal.player_pos
 		if RoomChangeGlobal.player_jump_on_enter:
 			velocity.y = PlayerVar.JUMP_VELOCITY
 		RoomChangeGlobal.activate = false
-
+	#endregion
+	
+	#region initialize health "bar"	
+	var hearts_parent = $HealthBar/HBoxContainer
+	PlayerVar.hearts_list = []
+	for child in hearts_parent.get_children():
+		PlayerVar.hearts_list.append(child)
+	update_heart_display()
+	#endregion
+	
+	PlayerVar.can_take_damage = true
+	is_in_danger = false
+		
 func _physics_process(delta: float) -> void:
 	get_input_state()
 	
@@ -98,11 +133,12 @@ func _physics_process(delta: float) -> void:
 		roll_cooldown -= delta
 	
 	current_state.update_state(delta)
-	
+		
 	move_and_slide()
 
 func _process(delta: float) -> void:
 	check_level()
+	check_dead()
 
 func change_state(new_state):
 	if new_state != null:
@@ -188,7 +224,7 @@ func handle_jump():
 		elif jump_buffer_timer.time_left > 0:
 			jumps += 1
 			change_state(States.Jumping)
-	else:
+	elif !on_rope:
 		if key_jump and 0 < jumps and jumps < PlayerVar.MAX_JUMPS and PlayerVar.can_double_jump:
 			jumps += 1
 			change_state(States.Jumping)
@@ -199,7 +235,7 @@ func handle_jump():
 				change_state(States.Jumping)
 
 func handle_falling():
-	if not is_on_floor():
+	if not is_on_floor() and not on_rope:
 		coyote_timer.start(PlayerVar.COYOTE_TIME)
 		change_state(States.Falling)
 
@@ -216,22 +252,28 @@ func horizontal_movement(acceleration: float = PlayerVar.GROUND_ACCELERATION, de
 		velocity.x = move_toward(velocity.x, move_direction_x * PlayerVar.move_speed * multiplier, deceleration)
 
 func handle_grapple():
-	if key_grapple and on_rope:
-		print("DETACHING")
+	if key_jump and on_rope:
+		print("Detaching")
 		_remove_rope()
 		velocity.y = -PlayerVar.JUMP_VELOCITY
 		change_state(States.Jumping)
 		return
+	
+	if key_grapple and on_rope:
+		print("Detaching")
+		_remove_rope()
+		change_state(States.Falling)
+		return
 
 	if key_grapple and not on_rope and current_state != States.Grappling:
 		if rc_grapple.is_colliding():
-			var hit_point = rc_grapple.get_collision_point()
-
-			if hit_point.y < global_position.y - 10: 
-				print("STARTING GRAPPLE")
-				change_state(States.Grappling)
-			else:
-				print("Grapple hit a wall → ignored")
+			print("Starting grapple")
+			change_state(States.Grappling)
+	
+	elif on_rope and (rc_bottom_left.is_colliding() or rc_bottom_right.is_colliding() or rc_down.is_colliding() or crouch_ray_1.is_colliding() or crouch_ray_2.is_colliding()):
+		_remove_rope()
+		change_state(States.Falling)
+		return
 
 func handle_crouch():
 	if is_on_floor() and key_crouch:
@@ -239,7 +281,7 @@ func handle_crouch():
 
 func handle_flip_h():
 	sprite.flip_h = facing < 1
-	var x_target = 74  # original x distance of ray
+	var x_target = 150
 	if facing < 1:
 		rc_grapple.target_position.x = -x_target 
 	else:
@@ -283,14 +325,12 @@ func _use_rope():
 	if not rc_grapple.is_colliding():
 		return
 	on_rope = true
-	
 	var collidingPoint = rc_grapple.get_collision_point()
-	var playerPosition = global_position + Vector2(7,0)
-	
+	var playerPosition = global_position + Vector2(12, -25)
+
 	var ropeNode = ROPE.instantiate()
 	get_parent().add_child(ropeNode)
-	ropeNode.set_rope(playerPosition, collidingPoint)
-	
+	ropeNode.set_rope(playerPosition, collidingPoint, facing > 0)
 	ropebody = ropeNode
 
 func _remove_rope():
@@ -302,7 +342,9 @@ func _remove_rope():
 #endregion
 
 func check_level():
-	if current_level.name == "linlevel_1":
+	if current_level.name == "linlevel_0":
+		return
+	elif current_level.name == "linlevel_1":
 		PlayerVar.can_dash = true 
 	elif current_level.name == "linlevel_2":
 		PlayerVar.can_dash = true 
@@ -321,4 +363,25 @@ func check_level():
 		PlayerVar.can_wall_jump = true
 		PlayerVar.can_double_jump = true
 		PlayerVar.can_roll = true
+
+func take_damage():
+	if PlayerVar.health > 0:
+		PlayerVar.health -= 1
+		update_heart_display()
+	print(PlayerVar.health)
+	
 		
+func update_heart_display():
+	for i in range(PlayerVar.hearts_list.size()):
+		PlayerVar.hearts_list[i].visible = i < PlayerVar.health
+		
+
+func check_dead():
+	if PlayerVar.health <= 0:
+		get_tree().reload_current_scene()
+		#get_tree().call_deferred("change_scene_to_file", "res://scenes/Level scenes/Lineair_test_levels/linlevel_0.tscn")
+		PlayerVar.death_count += 1
+		PlayerVar.health = PlayerVar.MAX_HEALTH
+
+func _on_invinsibility_timer_timeout() -> void:
+	PlayerVar.can_take_damage = true

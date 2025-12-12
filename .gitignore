@@ -1,18 +1,13 @@
-# Godot 4 editor/cache
+# Godot 4+ specific ignores
 .godot/
-.import/
-.mono/
+/android/
 
-# Exports/builds
-export/
-build/
-bin/
+# Godot 4 editor files
+.godot/
 
-# OS junk
-.DS_Store
-Thumbs.db
+# Except project.godot (project settings)
+!.godot/project.godot
 
-# Logs/temp
-*.log
-*.tmp
-
+# Export, cache, and temporary files
+export_presets.cfg
+*.import
