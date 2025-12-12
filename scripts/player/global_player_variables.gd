@@ -42,10 +42,12 @@ const MAX_HEALTH: float = 5
 var move_speed: float = RUNNING_SPEED
 var jump_speed: float = JUMP_VELOCITY
 
-var can_dash: bool
-var can_wall_jump: bool
-var can_double_jump: bool
-var can_roll: bool
+var can_dash: bool = false
+var can_wall_jump: bool = false
+var can_double_jump: bool = false
+var can_roll: bool = false
+var can_grapple: bool = false
+
 
 var y_velocity: float
 var x_velocity: float

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://dcfo12n5bitiv"]
+[gd_scene load_steps=7 format=4 uid="uid://dcfo12n5bitiv"]
 
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="1_ggehl"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_vcahf"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_xuq38"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="4_krxcn"]
 [ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="5_mra7y"]
+[ext_resource type="PackedScene" uid="uid://1tvkhtd81ah5" path="res://scenes/Activate_ability.tscn" id="6_vcahf"]
 
 [node name="linlevel_3" type="Node2D"]
 
@@ -17,7 +18,7 @@ collision_mask = 2
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_vcahf")]
 
 [node name="Player" parent="." instance=ExtResource("3_xuq38")]
-position = Vector2(-459, -64)
+position = Vector2(-342, -4)
 
 [node name="In game text" type="Node2D" parent="."]
 
@@ -39,3 +40,14 @@ position = Vector2(3165, -348)
 
 [node name="Next level2" parent="." instance=ExtResource("5_mra7y")]
 position = Vector2(33.15291, -1147.6215)
+
+[node name="AbilityActivator" parent="." instance=ExtResource("6_vcahf")]
+position = Vector2(12, -42)
+ability = "double_jump"
+
+[node name="Label" type="Label" parent="AbilityActivator"]
+offset_left = -35.0
+offset_top = -25.0
+offset_right = 92.0
+offset_bottom = -2.0
+text = "get double jump"

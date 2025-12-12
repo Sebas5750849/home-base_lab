@@ -22,7 +22,7 @@ tile_map_data = PackedByteArray("AAD9/wIAAAABABsAAAD+/wIAAAABABsAAAD//wIAAAABABs
 tile_set = ExtResource("2_08xtn")
 
 [node name="Player" parent="." instance=ExtResource("3_tp4ch")]
-position = Vector2(-783, -6)
+position = Vector2(-783, -4)
 
 [node name="Labels" type="Node2D" parent="."]
 

@@ -75,10 +75,8 @@ var key_grapple = false
 var current_state = null
 var previous_state = null
 
-#<<<<<<< HEAD
+
 var is_in_danger: bool = false
-#=======
-#>>>>>>> be20a8650aa7ec21cacfa53bb305890bdbb57d78
 
 # ability booleans
 
@@ -342,27 +340,26 @@ func _remove_rope():
 #endregion
 
 func check_level():
-	if current_level.name == "linlevel_0":
-		return
-	elif current_level.name == "linlevel_1":
-		PlayerVar.can_dash = true 
-	elif current_level.name == "linlevel_2":
-		PlayerVar.can_dash = true 
-		PlayerVar.can_wall_jump = true
-	elif current_level.name == "linlevel_3":
-		PlayerVar.can_dash = true 
-		PlayerVar.can_wall_jump = true
-		PlayerVar.can_double_jump = true
-	elif current_level.name == "linlevel_4":
-		PlayerVar.can_dash = true 
-		PlayerVar.can_wall_jump = true
-		PlayerVar.can_double_jump = true
-		PlayerVar.can_roll = true
-	else:
-		PlayerVar.can_dash = true 
-		PlayerVar.can_wall_jump = true
-		PlayerVar.can_double_jump = true
-		PlayerVar.can_roll = true
+	#if current_level.name == "linlevel_1":
+		#PlayerVar.can_dash = true 
+	#elif current_level.name == "linlevel_2":
+		#PlayerVar.can_dash = true 
+		#PlayerVar.can_wall_jump = true
+	#elif current_level.name == "linlevel_3":
+		#PlayerVar.can_dash = true 
+		#PlayerVar.can_wall_jump = true
+		#PlayerVar.can_double_jump = true
+	#elif current_level.name == "linlevel_4":
+		#PlayerVar.can_dash = true 
+		#PlayerVar.can_wall_jump = true
+		#PlayerVar.can_double_jump = true
+		#PlayerVar.can_roll = true
+	#else:
+		#PlayerVar.can_dash = true 
+		#PlayerVar.can_wall_jump = true
+		#PlayerVar.can_double_jump = true
+		#PlayerVar.can_roll = true
+	pass
 
 func take_damage():
 	if PlayerVar.health > 0:
