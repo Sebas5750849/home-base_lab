@@ -22,7 +22,7 @@ sources/0 = SubResource("TileSetAtlasSource_jclbv")
 [node name="linlevel_1" type="Node2D"]
 
 [node name="Reset ma game" parent="." instance=ExtResource("1_khjmu")]
-position = Vector2(-18, 215)
+position = Vector2(-18, 500)
 collision_mask = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

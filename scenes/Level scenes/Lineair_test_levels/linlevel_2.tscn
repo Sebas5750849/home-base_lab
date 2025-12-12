@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_gplml"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="4_jwnik"]
 [ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="5_ybk1w"]
-[ext_resource type="Texture2D" uid="uid://064td2e108d7" path="res://assets/spike_tile.png" id="6_fjbss"]
+[ext_resource type="Texture2D" uid="uid://c1er67w16ro5q" path="res://assets/spike_tile.png" id="6_fjbss"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gplml"]
 texture = ExtResource("6_fjbss")
@@ -19,7 +19,7 @@ sources/0 = SubResource("TileSetAtlasSource_gplml")
 [node name="linlevel_2" type="Node2D"]
 
 [node name="Reset ma game" parent="." instance=ExtResource("1_eqccf")]
-position = Vector2(-18, 215)
+position = Vector2(-18, 500)
 collision_mask = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
