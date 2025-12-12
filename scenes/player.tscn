@@ -445,7 +445,6 @@ script = ExtResource("17_qfm1y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, -22)
-zoom = Vector2(2, 2)
 
 [node name="HealthBar" type="CanvasLayer" parent="."]
 
