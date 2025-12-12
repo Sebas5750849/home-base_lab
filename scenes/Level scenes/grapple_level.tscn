@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://cmn8wmfaxj0ay"]
+[gd_scene load_steps=7 format=4 uid="uid://cmn8wmfaxj0ay"]
 
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="1_08xtn"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="1_qu6cs"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="2_08xtn"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_tp4ch"]
+[ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="5_2ls47"]
+[ext_resource type="Script" uid="uid://dg3t4youi70ll" path="res://scenes/Test_Levels_Mike/door_area_2d.gd" id="6_lquwm"]
 
 [node name="grapple_level" type="Node2D"]
 
@@ -96,3 +98,10 @@ offset_right = 1671.0
 offset_bottom = 157.0
 theme_override_font_sizes/font_size = 100
 text = "→"
+
+[node name="Next level" parent="." instance=ExtResource("5_2ls47")]
+position = Vector2(-480, -365)
+script = ExtResource("6_lquwm")
+connected_room = "res://scenes/Level scenes/point_light_test.tscn"
+player_pos = Vector2(-182, 59)
+player_jump_on_enter = false

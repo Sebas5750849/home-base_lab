@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7kgkeqw77nu3"]
+[gd_scene load_steps=12 format=3 uid="uid://c7kgkeqw77nu3"]
 
 [ext_resource type="Texture2D" uid="uid://bgs1jb55e5qxv" path="res://assets/tile_sheet_v.1.0.png" id="1_yf2mt"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_fv6eo"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_hrm4p"]
+[ext_resource type="PackedScene" uid="uid://1tvkhtd81ah5" path="res://scenes/Activate_ability.tscn" id="4_dmnng"]
+[ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="5_0fte0"]
+[ext_resource type="Script" uid="uid://dg3t4youi70ll" path="res://scenes/Test_Levels_Mike/door_area_2d.gd" id="6_4vgjb"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7k6sa"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -453,6 +456,7 @@ layer_1/tile_data = PackedInt32Array(-2752536, 851968, 27, -2686999, 851968, 27,
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_fv6eo")]
 
 [node name="Player" parent="." instance=ExtResource("3_hrm4p")]
+position = Vector2(-182, 59)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 light_mask = 3
@@ -462,3 +466,20 @@ shadow_enabled = true
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_dmnng")
 texture_scale = 5.0
+
+[node name="AbilityActivator" parent="." instance=ExtResource("4_dmnng")]
+position = Vector2(-79, 17)
+
+[node name="Label" type="Label" parent="AbilityActivator"]
+offset_left = -43.0
+offset_top = -25.0
+offset_right = 80.0
+offset_bottom = -2.0
+text = "GET WALL JUMP"
+
+[node name="Next level" parent="." instance=ExtResource("5_0fte0")]
+position = Vector2(744, 137)
+script = ExtResource("6_4vgjb")
+connected_room = "res://scenes/Level scenes/Lineair_test_levels/linlevel_1.tscn"
+player_pos = Vector2(-336, -33)
+player_jump_on_enter = false

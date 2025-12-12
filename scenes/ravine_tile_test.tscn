@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://y7iafoxgt52m"]
+[gd_scene load_steps=8 format=4 uid="uid://y7iafoxgt52m"]
 
-[ext_resource type="Texture2D" uid="uid://bsm8cl50px18r" path="res://assets/tile_sheet_ravine_2.png" id="1_46tvn"]
+[ext_resource type="Texture2D" uid="uid://cxggq20uvpvds" path="res://assets/tile_sheet_ravine_2.png" id="1_46tvn"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="2_j7ope"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="3_j7ope"]
+[ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="4_a18fk"]
+[ext_resource type="Script" uid="uid://dg3t4youi70ll" path="res://scenes/Test_Levels_Mike/door_area_2d.gd" id="5_mdu16"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y53wq"]
 texture = ExtResource("1_46tvn")
@@ -554,3 +556,10 @@ tile_set = SubResource("TileSet_a18fk")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_j7ope")]
+
+[node name="Next level" parent="." instance=ExtResource("4_a18fk")]
+position = Vector2(1067, 19)
+script = ExtResource("5_mdu16")
+connected_room = "res://scenes/Level scenes/Tutorial_level_2.tscn"
+player_pos = Vector2(2, -3)
+player_jump_on_enter = false
