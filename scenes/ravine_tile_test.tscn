@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://y7iafoxgt52m"]
+[gd_scene load_steps=6 format=4 uid="uid://y7iafoxgt52m"]
 
 [ext_resource type="Texture2D" uid="uid://bsm8cl50px18r" path="res://assets/tile_sheet_ravine_2.png" id="1_46tvn"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="2_j7ope"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="3_j7ope"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y53wq"]
 texture = ExtResource("1_46tvn")
@@ -549,3 +550,7 @@ tile_map_data = PackedByteArray("AAAAAAgAAAAOAAYAAAAAAAkAAAAOAAcAAAAAAAoAAAAGAAg
 tile_set = SubResource("TileSet_a18fk")
 
 [node name="Player" parent="." instance=ExtResource("2_j7ope")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_j7ope")]

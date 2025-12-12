@@ -224,7 +224,7 @@ func handle_jump():
 		elif jump_buffer_timer.time_left > 0:
 			jumps += 1
 			change_state(States.Jumping)
-	else:
+	elif !on_rope:
 		if key_jump and 0 < jumps and jumps < PlayerVar.MAX_JUMPS and PlayerVar.can_double_jump:
 			jumps += 1
 			change_state(States.Jumping)
@@ -235,7 +235,7 @@ func handle_jump():
 				change_state(States.Jumping)
 
 func handle_falling():
-	if not is_on_floor():
+	if not is_on_floor() and not on_rope:
 		coyote_timer.start(PlayerVar.COYOTE_TIME)
 		change_state(States.Falling)
 
@@ -253,14 +253,14 @@ func horizontal_movement(acceleration: float = PlayerVar.GROUND_ACCELERATION, de
 
 func handle_grapple():
 	if key_jump and on_rope:
-		print("DETACHING")
+		print("Detaching")
 		_remove_rope()
 		velocity.y = -PlayerVar.JUMP_VELOCITY
 		change_state(States.Jumping)
 		return
 	
 	if key_grapple and on_rope:
-		print("DETACHING")
+		print("Detaching")
 		_remove_rope()
 		change_state(States.Falling)
 		return
