@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj8vqtv07i5xb"]
+[gd_scene load_steps=10 format=3 uid="uid://dj8vqtv07i5xb"]
 
 [ext_resource type="Script" uid="uid://dhdlkna0oepvm" path="res://scripts/flower_enemy.gd" id="1_2arsj"]
-[ext_resource type="Texture2D" uid="uid://bw6w0a60vccnp" path="res://assets/flower_enemy.png" id="1_klqdu"]
+[ext_resource type="Texture2D" uid="uid://d4f43p0m5y6sv" path="res://assets/flower_enemy.png" id="1_klqdu"]
+[ext_resource type="Script" uid="uid://bft0gkfy57fos" path="res://scripts/danger_zone.gd" id="3_8roof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2arsj"]
 
@@ -39,6 +40,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8roof"]
+radius = 12.0
+
 [node name="flower_enemy" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_2arsj")
@@ -59,4 +63,13 @@ collision_mask = 4
 [node name="Timer" type="Timer" parent="."]
 wait_time = 9.282
 
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_8roof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8roof")
+debug_color = Color(0.9897384, 0, 0.29238653, 0.41960785)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
