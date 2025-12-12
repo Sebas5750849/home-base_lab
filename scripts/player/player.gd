@@ -75,10 +75,10 @@ var key_grapple = false
 var current_state = null
 var previous_state = null
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 var is_in_danger: bool = false
-=======
->>>>>>> be20a8650aa7ec21cacfa53bb305890bdbb57d78
+#=======
+#>>>>>>> be20a8650aa7ec21cacfa53bb305890bdbb57d78
 
 # ability booleans
 
@@ -342,13 +342,9 @@ func _remove_rope():
 #endregion
 
 func check_level():
-<<<<<<< HEAD
 	if current_level.name == "linlevel_0":
 		return
-	if current_level.name == "linlevel_1":
-=======
-	if current_level.name == "linlevel_1" or current_level.name == "linlevel_0" :
->>>>>>> be20a8650aa7ec21cacfa53bb305890bdbb57d78
+	elif current_level.name == "linlevel_1":
 		PlayerVar.can_dash = true 
 	elif current_level.name == "linlevel_2":
 		PlayerVar.can_dash = true 
