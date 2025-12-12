@@ -133,7 +133,10 @@ func _physics_process(delta: float) -> void:
 		roll_cooldown -= delta
 	
 	current_state.update_state(delta)
-		
+	
+	if Input.is_action_just_pressed("damage"):
+		take_damage()
+	
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -365,10 +368,14 @@ func check_level():
 		PlayerVar.can_roll = true
 
 func take_damage():
+	var current_pos = global_position
+	var lvl_name = current_level.name
+	Analytics.send_damage_event("Anonymous", current_pos, lvl_name)
 	if PlayerVar.health > 0:
 		PlayerVar.health -= 1
 		update_heart_display()
 	print(PlayerVar.health)
+	
 	
 		
 func update_heart_display():
@@ -378,6 +385,10 @@ func update_heart_display():
 
 func check_dead():
 	if PlayerVar.health <= 0:
+		# send data to supabase
+		var current_pos = global_position
+		var lvl_name = current_level.name
+		Analytics.send_death_event("Anonymous", current_pos, lvl_name)
 		# get_tree().reload_current_scene()
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/Level scenes/Lineair_test_levels/linlevel_0.tscn")
 		PlayerVar.death_count += 1
