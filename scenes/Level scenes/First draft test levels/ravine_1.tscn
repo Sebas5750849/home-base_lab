@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="2_krpcp"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="3_oi5tg"]
 
-[node name="linlevel_5" type="Node2D"]
+[node name="Ravine_1" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
