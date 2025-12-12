@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg8ojy1klpafa"]
+[gd_scene load_steps=3 format=3 uid="uid://dg8ojy1klpafa"]
 
 [ext_resource type="Texture2D" uid="uid://clhe8y3bacsph" path="res://assets/crashed_space_ship.png" id="1_8jnx0"]
+[ext_resource type="Script" uid="uid://db0qj5ao87g4x" path="res://scripts/start_screen.gd" id="1_nuicx"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -11,7 +12,56 @@ offset_left = 4.0
 offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nuicx")
 
-[node name="CrashedSpaceShip" type="Sprite2D" parent="."]
-position = Vector2(588, 324)
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -3.0
+offset_right = 24.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_8jnx0")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -348.0
+offset_top = 86.0
+offset_right = -247.0
+offset_bottom = 217.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012152778
+anchor_top = 0.0015432099
+anchor_right = 0.061631944
+anchor_bottom = 0.0015432099
+offset_left = 245.0
+offset_top = 101.0
+offset_right = 315.0
+offset_bottom = 202.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
