@@ -450,8 +450,10 @@ position = Vector2(1, -22)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HealthBar"]
 custom_minimum_size = Vector2(0.75, 0)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 93.0
+offset_top = 67.0
+offset_right = 179.0
+offset_bottom = 107.0
 size_flags_horizontal = 4
 
 [node name="Heart" type="TextureRect" parent="HealthBar/HBoxContainer"]
