@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="game_prototype"
-run/main_scene="uid://ncowwgti5yir"
+run/main_scene="uid://dg8ojy1klpafa"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://bkcawwietdj2v"
 
@@ -19,6 +19,7 @@ config/icon="uid://bkcawwietdj2v"
 
 RoomChangeGlobal="*res://scenes/Test_Levels_Mike/Room_change_global.gd"
 PlayerVar="*res://scripts/player/global_player_variables.gd"
+Analytics="*res://scripts/analytics.gd"
 
 [display]
 

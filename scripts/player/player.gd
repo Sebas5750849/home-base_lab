@@ -133,7 +133,10 @@ func _physics_process(delta: float) -> void:
 		roll_cooldown -= delta
 	
 	current_state.update_state(delta)
-		
+	
+	if Input.is_action_just_pressed("damage"):
+		take_damage()
+	
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -224,7 +227,7 @@ func handle_jump():
 		elif jump_buffer_timer.time_left > 0:
 			jumps += 1
 			change_state(States.Jumping)
-	else:
+	elif !on_rope:
 		if key_jump and 0 < jumps and jumps < PlayerVar.MAX_JUMPS and PlayerVar.can_double_jump:
 			jumps += 1
 			change_state(States.Jumping)
@@ -235,7 +238,7 @@ func handle_jump():
 				change_state(States.Jumping)
 
 func handle_falling():
-	if not is_on_floor():
+	if not is_on_floor() and not on_rope:
 		coyote_timer.start(PlayerVar.COYOTE_TIME)
 		change_state(States.Falling)
 
@@ -253,14 +256,14 @@ func horizontal_movement(acceleration: float = PlayerVar.GROUND_ACCELERATION, de
 
 func handle_grapple():
 	if key_jump and on_rope:
-		print("DETACHING")
+		print("Detaching")
 		_remove_rope()
 		velocity.y = -PlayerVar.JUMP_VELOCITY
 		change_state(States.Jumping)
 		return
 	
 	if key_grapple and on_rope:
-		print("DETACHING")
+		print("Detaching")
 		_remove_rope()
 		change_state(States.Falling)
 		return
@@ -365,10 +368,14 @@ func check_level():
 		PlayerVar.can_roll = true
 
 func take_damage():
+	var current_pos = global_position
+	var lvl_name = current_level.name
+	Analytics.send_damage_event("Anonymous", current_pos, lvl_name)
 	if PlayerVar.health > 0:
 		PlayerVar.health -= 1
 		update_heart_display()
 	print(PlayerVar.health)
+	
 	
 		
 func update_heart_display():
@@ -378,8 +385,16 @@ func update_heart_display():
 
 func check_dead():
 	if PlayerVar.health <= 0:
+		# send data to supabase
+		var current_pos = global_position
+		var lvl_name = current_level.name
+		Analytics.send_death_event("Anonymous", current_pos, lvl_name)
+		# get_tree().reload_current_scene()
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Level scenes/Lineair_test_levels/linlevel_0.tscn")
+
 		get_tree().reload_current_scene()
 		#get_tree().call_deferred("change_scene_to_file", "res://scenes/Level scenes/Lineair_test_levels/linlevel_0.tscn")
+
 		PlayerVar.death_count += 1
 		PlayerVar.health = PlayerVar.MAX_HEALTH
 
