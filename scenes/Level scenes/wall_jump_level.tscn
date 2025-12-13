@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=4 uid="uid://cu6btkq7ojv00"]
 
-[ext_resource type="Texture2D" uid="uid://bgs1jb55e5qxv" path="res://assets/tile_sheet_v.1.0.png" id="1_isiuw"]
-[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_slpx4"]
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="3_veio8"]
+[ext_resource type="Texture2D" uid="uid://bgs1jb55e5qxv" path="res://assets/Tilesets/tile_sheet_v.1.0.png" id="1_isiuw"]
+[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="3_slpx4"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="3_veio8"]
 [ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="4_rl132"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pr1re"]

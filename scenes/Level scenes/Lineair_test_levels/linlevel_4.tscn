@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=4 uid="uid://dd780e5ohloks"]
 
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="1_ritvk"]
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_aukiu"]
-[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_q04sy"]
-[ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="4_jg0md"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="2_aukiu"]
+[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="3_q04sy"]
+[ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesets/Tilesetlayer of the game.tres" id="4_jg0md"]
 [ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="5_66qio"]
 
 [node name="linlevel_4" type="Node2D"]

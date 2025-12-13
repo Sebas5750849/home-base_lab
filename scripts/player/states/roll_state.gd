@@ -12,7 +12,7 @@ func enter_state():
 func exit_state():
 	Player.roll_cooldown = PlayerVar.ROLL_COOLDOWN
 	Player.roll_timer = PlayerVar.ROLL_DURATION
-	if Player.current_state == States.Crouching:
+	if PlayerVar.current_state == States.Crouching:
 		return
 	Player.collision_shape.shape = Player.standing_shape
 	Player.collision_shape.position.y = -22
@@ -23,8 +23,9 @@ func draw():
 func update_state(delta):
 	Player.roll_timer -= delta
 	Player.handle_gravity(delta)
-	handle_animations()
 	handle_roll_transition()
+	handle_animations()
+	
 	
 func handle_animations():
 	$"../../AnimatedSprite2D".play("roll")
