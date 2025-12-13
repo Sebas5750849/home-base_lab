@@ -17,9 +17,10 @@ config/icon="uid://bkcawwietdj2v"
 
 [autoload]
 
-RoomChangeGlobal="*res://scenes/Level scenes/Test_Levels_Mike/Room_change_global.gd"
+RoomChangeGlobal="*res://scripts/Room_change_global.gd"
 PlayerVar="*res://scripts/player/global_player_variables.gd"
 Analytics="*res://scripts/analytics.gd"
+GameVar="*res://scripts/Global_Game_Variables.gd"
 
 [display]
 

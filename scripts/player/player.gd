@@ -72,15 +72,9 @@ var key_crouch = false
 var key_grapple = false
 
 # states
-var current_state = null
-var previous_state = null
 
-#<<<<<<< HEAD
+
 var is_in_danger: bool = false
-#=======
-#>>>>>>> be20a8650aa7ec21cacfa53bb305890bdbb57d78
-
-# ability booleans
 
 #region main game loop
 func _ready() -> void:
@@ -95,14 +89,21 @@ func _ready() -> void:
 	for child_state in States.get_children():
 		child_state.States = States
 		child_state.Player = self
-	previous_state = States.Idle
-	current_state = States.Idle
-	print("current_state = ", current_state)
-	print("previous_state = ", previous_state)
+		
+	if PlayerVar.previous_state == null and PlayerVar.current_state == null:
+		PlayerVar.previous_state = States.Idle
+		PlayerVar.current_state = States.Idle
+	
+	
+	
+	print("current_state = ", PlayerVar.current_state)
+	print("previous_state = ", PlayerVar.previous_state)
 	print(current_level.name)
 	
 	if not PlayerVar.lock_starting_level:
 		PlayerVar.starting_level = current_level
+	
+	velocity = PlayerVar.exit_velocity
 	
 	#region switching levels
 	if RoomChangeGlobal.activate:
@@ -132,11 +133,12 @@ func _physics_process(delta: float) -> void:
 	if roll_cooldown > 0:
 		roll_cooldown -= delta
 	
-	current_state.update_state(delta)
+	PlayerVar.current_state.update_state(delta)
 	
 	if Input.is_action_just_pressed("damage"):
 		take_damage()
 	
+	PlayerVar.player_velocity = velocity
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -145,12 +147,12 @@ func _process(delta: float) -> void:
 
 func change_state(new_state):
 	if new_state != null:
-		previous_state = current_state
-		current_state = new_state
-		previous_state.exit_state()
-		current_state.enter_state()
-		print("State chaged from: " + previous_state.Name + \
-			" to " + current_state.Name )	
+		PlayerVar.previous_state = PlayerVar.current_state
+		PlayerVar.current_state = new_state
+		PlayerVar.previous_state.exit_state()
+		PlayerVar.current_state.enter_state()
+		print("State chaged from: " + PlayerVar.previous_state.Name + \
+			" to " + PlayerVar.current_state.Name )	
 #endregion
 
 #region custom function
@@ -184,21 +186,21 @@ func get_input_state():
 func handle_ice():
 	if key_crouch:
 		return
-	if is_on_ice() and current_state != States.RunningIce and (key_left or key_right):
+	if is_on_ice() and PlayerVar.current_state != States.RunningIce and (key_left or key_right):
 		change_state(States.RunningIce)
-	elif is_on_ice() and current_state != States.Sliding and (!key_left and !key_right):
+	elif is_on_ice() and PlayerVar.current_state != States.Sliding and (!key_left and !key_right):
 		change_state(States.Sliding)
-	elif not is_on_ice() and (current_state == States.RunningIce):
+	elif not is_on_ice() and (PlayerVar.current_state == States.RunningIce):
 		change_state(States.Running)
-	elif not is_on_ice() and current_state == States.Sliding:
+	elif not is_on_ice() and PlayerVar.current_state == States.Sliding:
 		change_state(States.Idle)
 
 func handle_mud():
 	if key_crouch:
 		return
-	if is_on_mud() and current_state != States.RunningMud:
+	if is_on_mud() and PlayerVar.current_state != States.RunningMud:
 		change_state(States.RunningMud)
-	elif not is_on_mud() and (current_state == States.RunningMud):
+	elif not is_on_mud() and (PlayerVar.current_state == States.RunningMud):
 		change_state(States.Running)
 
 func handle_dash():
@@ -206,7 +208,7 @@ func handle_dash():
 		change_state(States.Dashing)
 
 func handle_roll():
-	if key_dash and roll_cooldown <= 0 and current_state == States.Crawling and PlayerVar.can_roll:
+	if key_dash and roll_cooldown <= 0 and PlayerVar.current_state == States.Crawling and PlayerVar.can_roll:
 		change_state(States.Rolling)
 
 func handle_wall_jump():
@@ -268,7 +270,7 @@ func handle_grapple():
 		change_state(States.Falling)
 		return
 
-	if key_grapple and not on_rope and current_state != States.Grappling:
+	if key_grapple and not on_rope and PlayerVar.current_state != States.Grappling:
 		if rc_grapple.is_colliding():
 			print("Starting grapple")
 			change_state(States.Grappling)
