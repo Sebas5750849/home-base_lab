@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dj8vqtv07i5xb"]
 
 [ext_resource type="Script" uid="uid://dhdlkna0oepvm" path="res://scripts/flower_enemy.gd" id="1_2arsj"]
-[ext_resource type="Texture2D" uid="uid://d4f43p0m5y6sv" path="res://assets/flower_enemy.png" id="1_klqdu"]
+[ext_resource type="Texture2D" uid="uid://bw6w0a60vccnp" path="res://assets/flower_enemy.png" id="1_klqdu"]
 [ext_resource type="Script" uid="uid://bft0gkfy57fos" path="res://scripts/danger_zone.gd" id="3_8roof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2arsj"]

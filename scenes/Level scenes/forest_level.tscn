@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://cf552bd16wl8r"]
+[gd_scene load_steps=11 format=4 uid="uid://cf552bd16wl8r"]
 
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="1_kw86b"]
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_eje30"]
-[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_uh83x"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="2_eje30"]
+[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="3_uh83x"]
 [ext_resource type="Texture2D" uid="uid://1hjuqeqttqwy" path="res://assets/mininicular.png" id="3_vp36s"]
 [ext_resource type="Texture2D" uid="uid://x73p0yyfc5l3" path="res://assets/A2.png" id="4_x47u1"]
-[ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="6_x47u1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohuq2"]
 texture = ExtResource("3_vp36s")
@@ -1420,6 +1419,3 @@ position = Vector2(-409, -15)
 
 [node name="Reset ma game" parent="." instance=ExtResource("1_kw86b")]
 position = Vector2(-4, 325)
-
-[node name="flower_enemy" parent="." groups=["Enemy"] instance=ExtResource("6_x47u1")]
-position = Vector2(1428, 179)

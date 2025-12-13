@@ -31,7 +31,7 @@ func _on_options_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	resume()
-	get_tree().change_scene_to_file("res://scenes/HomeScreenScenes/StartScreen.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menus/HomeScreenScenes/StartScreen.tscn")
 
 func _process(delta):
 	testEsc()
