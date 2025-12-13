@@ -37,7 +37,7 @@ var standing_shape = preload("res://resources/standing_collision_shape.tres")
 var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
 
 # External scenes
-const ROPE = preload("res://scenes/rope.tscn")
+const ROPE = preload("res://scenes/Player/rope.tscn")
 
 var move_direction_x = 0
 var jumps: int = 0

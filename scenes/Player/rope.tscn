@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d282upyfx1m7y"]
 
-[ext_resource type="Script" uid="uid://cs5co07eochkk" path="res://scripts/rope.gd" id="1_ghbyf"]
-[ext_resource type="Texture2D" uid="uid://c4g22vj5bsowi" path="res://assets/Rope.png" id="2_vlfmi"]
+[ext_resource type="Script" uid="uid://cs5co07eochkk" path="res://scripts/player/rope.gd" id="1_ghbyf"]
+[ext_resource type="Texture2D" uid="uid://bjushtfmioypq" path="res://assets/Rope.png" id="2_vlfmi"]
 
 [sub_resource type="GDScript" id="GDScript_l37dg"]
 

@@ -15,8 +15,8 @@
 [ext_resource type="Script" uid="uid://b4d8m47dve5tf" path="res://scripts/player/states/wall_jump_state.gd" id="13_jej6c"]
 [ext_resource type="Script" uid="uid://d1dm8od2bt7h6" path="res://scripts/player/states/running_ice_state.gd" id="14_f1ej7"]
 [ext_resource type="Script" uid="uid://dsvwn2yib2n08" path="res://scripts/player/states/sliding.gd" id="15_oprun"]
-[ext_resource type="Script" uid="uid://dbaartkvgxmsq" path="res://scenes/running_mud.gd" id="16_a8ls1"]
-[ext_resource type="Script" uid="uid://curbpiwt3jo0b" path="res://scripts/grappling.gd" id="17_qfm1y"]
+[ext_resource type="Script" uid="uid://dbaartkvgxmsq" path="res://scripts/player/states/running_mud.gd" id="16_a8ls1"]
+[ext_resource type="Script" uid="uid://curbpiwt3jo0b" path="res://scripts/player/states/grappling.gd" id="17_qfm1y"]
 [ext_resource type="PackedScene" uid="uid://beq8q2v4stw41" path="res://scenes/Player/Heart.tscn" id="18_fulsm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
