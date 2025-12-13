@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=3 uid="uid://fp2kjv70lur3"]
 
 [ext_resource type="Script" uid="uid://werk8lrckice" path="res://scripts/player/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://bt10p3hnc8kd2" path="res://assets/platformer_sprites_pixelized_1.png" id="3_dqkch"]
+[ext_resource type="Texture2D" uid="uid://g2mkj2cqsphe" path="res://assets/platformer_sprites_pixelized_1.png" id="3_dqkch"]
 [ext_resource type="Shape2D" uid="uid://caeu0l5xg45co" path="res://resources/standing_collision_shape.tres" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://d0k7cag1bjcy3" path="res://scripts/player/states/States.gd" id="4_3v2ag"]
 [ext_resource type="Script" uid="uid://7h11j1c6pbxj" path="res://scripts/player/states/idle_state.gd" id="5_d2wvv"]

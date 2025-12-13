@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="1_0fte0"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="2_fv6eo"]
-[ext_resource type="Texture2D" uid="uid://w6nji0w2x5h4" path="res://assets/Tilesets/tile_sheet_ravine_2.png" id="3_dmnng"]
+[ext_resource type="Texture2D" uid="uid://wv0ard42aoge" path="res://assets/Tilesets/tile_sheet_ravine_2.png" id="3_dmnng"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="3_hrm4p"]
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="4_suh83"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesets/Tilesetlayer of the game.tres" id="5_0fte0"]

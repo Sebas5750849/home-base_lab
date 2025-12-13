@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://y7iafoxgt52m"]
 
-[ext_resource type="Texture2D" uid="uid://w6nji0w2x5h4" path="res://assets/Tilesets/tile_sheet_ravine_2.png" id="1_46tvn"]
+[ext_resource type="Texture2D" uid="uid://wv0ard42aoge" path="res://assets/Tilesets/tile_sheet_ravine_2.png" id="1_46tvn"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="2_j7ope"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="3_j7ope"]
 
