@@ -121,7 +121,7 @@ text = "Options"
 
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit"
+text = "Quit to menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
