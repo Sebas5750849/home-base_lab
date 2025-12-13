@@ -25,7 +25,7 @@ const AIR_DECELERATION: float = 20
 const WALL_KICK_ACCELERATION: float = 4
 const WALL_KICK_DECELERATION: float = 5
 
-const DASH_DURATION:float = 0.0001
+const DASH_DURATION:float = 0.05
 const DASH_COOLDOWN: float = 1
 const ROLL_DURATION: float = 0.4
 const ROLL_COOLDOWN: float = 1
@@ -37,8 +37,6 @@ const INVINCIBILITY_TIME: float = 1
 
 const MAX_HEALTH: float = 5
 
-
-
 var move_speed: float = RUNNING_SPEED
 var jump_speed: float = JUMP_VELOCITY
 
@@ -47,8 +45,7 @@ var can_wall_jump: bool
 var can_double_jump: bool
 var can_roll: bool
 
-var y_velocity: float
-var x_velocity: float
+var player_velocity: Vector2
 
 var is_dead: bool = false
 var death_count: int
@@ -61,7 +58,7 @@ var hearts_list: Array[TextureRect]
 var starting_level: Node2D
 var lock_starting_level: bool = false
 
+var exit_velocity: Vector2
 
-
-
-		
+var current_state = null
+var previous_state = null

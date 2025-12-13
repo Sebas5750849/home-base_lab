@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=4 uid="uid://dtgestpeaioqq"]
 
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="1_khjmu"]
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="2_snxwq"]
-[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="3_jclbv"]
-[ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="4_0b18n"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="2_snxwq"]
+[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="3_jclbv"]
+[ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesets/Tilesetlayer of the game.tres" id="4_0b18n"]
 [ext_resource type="PackedScene" uid="uid://6rbe65q1yky6" path="res://scenes/next_level.tscn" id="5_3mkc7"]
 [ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="6_snxwq"]
-[ext_resource type="Texture2D" uid="uid://c1er67w16ro5q" path="res://assets/spike_tile.png" id="7_jclbv"]
+[ext_resource type="Texture2D" uid="uid://064td2e108d7" path="res://assets/Tilesets/spike_tile.png" id="7_jclbv"]
 [ext_resource type="Script" uid="uid://bft0gkfy57fos" path="res://scripts/danger_zone.gd" id="8_0b18n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jclbv"]

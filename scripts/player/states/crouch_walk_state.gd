@@ -7,7 +7,7 @@ func enter_state():
 	pass
 	
 func exit_state():
-	if Player.current_state == States.Crouching:
+	if PlayerVar.current_state == States.Crouching:
 		return
 	if above_head_is_clear():
 		Player.collision_shape.shape = Player.standing_shape

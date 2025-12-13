@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=4 uid="uid://dtks376d60rje"]
 
-[ext_resource type="Texture2D" uid="uid://bgs1jb55e5qxv" path="res://assets/tile_sheet_v.1.0.png" id="1_6jwdo"]
-[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="2_qmx1e"]
-[ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Test_Levels_Mike/DoorArea2D.tscn" id="3_b8s22"]
+[ext_resource type="Texture2D" uid="uid://bgs1jb55e5qxv" path="res://assets/Tilesets/tile_sheet_v.1.0.png" id="1_6jwdo"]
+[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="2_qmx1e"]
+[ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="3_b8s22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5e8jq"]
 texture = ExtResource("1_6jwdo")
@@ -397,7 +397,7 @@ tile_set = SubResource("TileSet_chx11")
 position = Vector2(142, -90)
 
 [node name="ToLevel2" parent="." instance=ExtResource("3_b8s22")]
-connected_room = "res://scenes/Test_Levels_Mike/Room_2.tscn"
+connected_room = "res://scenes/Level scenes/Test_Levels_Mike/Room_2.tscn"
 player_pos = Vector2(-137, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToLevel2"]

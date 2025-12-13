@@ -9,6 +9,7 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		print("body entered")
+		PlayerVar.exit_velocity = PlayerVar.player_velocity
 		RoomChangeGlobal.activate = true
 		print(RoomChangeGlobal.activate)
 		RoomChangeGlobal.player_pos = player_pos
