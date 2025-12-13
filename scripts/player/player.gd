@@ -209,6 +209,7 @@ func handle_dash():
 
 func handle_roll():
 	if key_dash and roll_cooldown <= 0 and PlayerVar.current_state == States.Crawling and PlayerVar.can_roll:
+		print(PlayerVar.can_roll)
 		change_state(States.Rolling)
 
 func handle_wall_jump():
