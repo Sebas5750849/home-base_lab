@@ -221,6 +221,8 @@ func handle_wall_jump():
 func handle_gravity(delta, gravity: float = PlayerVar.GRAVITY_JUMP):
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		if velocity.y >= PlayerVar.MAX_FALL_VELOCITY:
+			velocity.y = PlayerVar.MAX_FALL_VELOCITY
 
 func handle_jump():
 	if is_on_floor():

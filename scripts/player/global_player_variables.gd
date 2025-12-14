@@ -11,7 +11,7 @@ const GRAVITY_JUMP: float = 1000 # ProjectSettings.get_setting("physics/2d/defau
 const GRAVITY_FALL: float = 700
 # const DASH_SPEED: float = 700
 const DASH_SPEED: float = 600
-const ROLL_SPEED: float = 200
+const ROLL_SPEED: float = 500
 const CROUCH_SPEED_MULTIPLIER: float = 0.35
 const MUD_SPEED_MULTIPLIER = 0.3
 const WALL_JUMP_VELOCITY: float = -400
@@ -36,6 +36,8 @@ const MAX_JUMPS: int = 2
 const INVINCIBILITY_TIME: float = 1
 
 const MAX_HEALTH: float = 5
+const MAX_FALL_VELOCITY: float = 1000
+
 
 var move_speed: float = RUNNING_SPEED
 var jump_speed: float = JUMP_VELOCITY
@@ -44,6 +46,7 @@ var can_dash: bool
 var can_wall_jump: bool
 var can_double_jump: bool
 var can_roll: bool
+var can_grapple: bool
 
 var player_velocity: Vector2
 
