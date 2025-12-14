@@ -30,7 +30,7 @@ func _on_options_pressed() -> void:
 	var options = preload("res://scenes/Menus/options_menu.tscn").instantiate()
 	add_child(options)
 
-	options.back_requested.connect(func():
+	options.back.connect(func():
 		options.queue_free()
 	)
 

@@ -15,7 +15,6 @@ func _on_options_button_pressed() -> void:
 	var options = preload("res://scenes/Menus/options_menu.tscn").instantiate()
 	add_child(options)
 
-	options.back_requested.connect(func():
+	options.back.connect(func():
 		options.queue_free()
 	)
-	#get_tree().change_scene_to_file("res://scenes/Menus/options_menu.tscn")
