@@ -12,4 +12,9 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_options_button_pressed() -> void:
-	pass # Replace with function body.
+	var options = preload("res://scenes/Menus/options_menu.tscn").instantiate()
+	add_child(options)
+
+	options.back.connect(func():
+		options.queue_free()
+	)
