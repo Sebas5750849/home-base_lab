@@ -27,7 +27,12 @@ func _on_restart_pressed() -> void:
 	PlayerVar.health = PlayerVar.MAX_HEALTH
 
 func _on_options_pressed() -> void:
-	resume()
+	var options = preload("res://scenes/Menus/options_menu.tscn").instantiate()
+	add_child(options)
+
+	options.back.connect(func():
+		options.queue_free()
+	)
 
 func _on_quit_pressed() -> void:
 	resume()
