@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=4 uid="uid://dcfdqfnd4dbll"]
 
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="1_fns5f"]
-[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="2_krpcp"]
-[ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="3_oi5tg"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="1_fns5f"]
+[ext_resource type="PackedScene" path="res://scenes/Player/player.tscn" id="2_krpcp"]
+[ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesets/Tilesetlayer of the game.tres" id="3_oi5tg"]
 
 [node name="Ravine_1" type="Node2D"]
 
