@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq21hjwmk6nqx"]
+
+[ext_resource type="Script" uid="uid://bft0gkfy57fos" path="res://scripts/danger_zone.gd" id="1_0l8yh"]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_0l8yh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(217.18517, -244.00002)
+scale = Vector2(2.1143441, 1)
+polygon = PackedVector2Array(4.5369873, -14, 24, -14, 46.09314, -14, 49.77533, 2, 0, 2)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
