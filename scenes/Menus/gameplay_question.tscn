@@ -28,11 +28,19 @@ offset_bottom = 370.0
 
 [node name="yes" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../no")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../no")
+focus_neighbor_bottom = NodePath(".")
 toggle_mode = true
 text = "Yes"
 
 [node name="no" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../yes")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../yes")
+focus_neighbor_bottom = NodePath(".")
 toggle_mode = true
 text = "No"
 

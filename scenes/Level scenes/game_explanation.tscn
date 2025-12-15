@@ -91,7 +91,7 @@ interact_value = "it worked"
 
 [node name="InteractArea2" parent="InteractionAreas" instance=ExtResource("5_r6pjt")]
 position = Vector2(1042, 475)
-interact_label = "Ship Log: 14/12/2025 near planet 42 fatal engine faliure occured, loosing altitude, pilot extraction protocol activated"
+interact_label = "Ship Log: 14/12/2025 near planet 42 fatal engine faliure occured, losing altitude, pilot extraction protocol activated"
 interact_type = "print_text"
 interact_value = "it worked"
 
@@ -103,19 +103,19 @@ interact_value = "it worked"
 
 [node name="InteractArea6" parent="InteractionAreas" instance=ExtResource("5_r6pjt")]
 position = Vector2(4473, 294)
-interact_label = "press shift to run faster"
+interact_label = "press shift to dash"
 interact_type = "print_text"
 interact_value = "it worked"
 
 [node name="InteractArea5" parent="InteractionAreas" instance=ExtResource("5_r6pjt")]
 position = Vector2(3285, 299)
-interact_label = "Ship analysis: there are 4 broken parts scattered around the land travel to find them and repair the ship "
+interact_label = "Ship analysis: there are 4 broken parts scattered across the land. Travel to find them and repair the ship "
 interact_type = "print_text"
 interact_value = "it worked"
 
 [node name="InteractArea4" parent="InteractionAreas" instance=ExtResource("5_r6pjt")]
 position = Vector2(3928, 301)
-interact_label = "Fauna Analyisis: the following creature is friendly and has given previous explores the ability to run faster for short burst of time"
+interact_label = "Fauna Analyisis: the following creature is friendly and has given previous explorers the ability to run faster for short bursts of time"
 interact_type = "print_text"
 interact_value = "it worked"
 
@@ -128,3 +128,10 @@ player_pos = Vector2(-2496, -486)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/To_ravine_0"]
 position = Vector2(6301, 583)
 shape = SubResource("RectangleShape2D_81rdi")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 431.0
+offset_top = -42.0
+offset_right = 650.0
+offset_bottom = -19.0
+text = "Press esc to pause the game"
