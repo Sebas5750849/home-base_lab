@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="3_hrst0"]
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="4_aaajd"]
 [ext_resource type="PackedScene" uid="uid://dncympebfnlau" path="res://scenes/level_elements/Interaction/interact_area.tscn" id="5_r6pjt"]
-[ext_resource type="Texture2D" uid="uid://6wumqgev8y2a" path="res://assets/px_space_ship.png" id="6_hrst0"]
+[ext_resource type="Texture2D" uid="uid://bt1b5eivbnqwk" path="res://assets/px_space_ship.png" id="6_hrst0"]
 [ext_resource type="PackedScene" uid="uid://bxfkmtkbidone" path="res://scenes/dash_scorpion.tscn" id="7_aaajd"]
 
 [node name="GameExplanation" type="Node2D"]
@@ -25,48 +25,6 @@ position = Vector2(-3, -677)
 [node name="Reset ma game" parent="." instance=ExtResource("4_aaajd")]
 position = Vector2(454, 2116)
 
-[node name="InteractArea" parent="." instance=ExtResource("5_r6pjt")]
-position = Vector2(1250, 474)
-interact_label = "press down to crouch"
-interact_type = "print_text"
-interact_value = "it worked"
-
-[node name="InteractArea2" parent="." instance=ExtResource("5_r6pjt")]
-position = Vector2(1042, 475)
-interact_label = "Ship Log: 14/12/2025 near planet 42 fatal engine faliure occured, loosing altitude, pilot extraction protocol activated"
-interact_type = "print_text"
-interact_value = "it worked"
-
-[node name="InteractArea3" parent="." instance=ExtResource("5_r6pjt")]
-position = Vector2(2286, 199)
-interact_label = "Planet 42 analysis: Atmosphere slightly toxic, terrain difficult to traverse, previous explorers report interacting with local fauna in unexplicable ways, that aided them in their traversal, some fauna are friendly others are not REMAIN CAUTIOUS "
-interact_type = "print_text"
-interact_value = "it worked"
-
-[node name="InteractArea7" parent="." instance=ExtResource("5_r6pjt")]
-position = Vector2(2545, 411)
-interact_label = "you can doubble jump!!"
-interact_type = "print_text"
-interact_value = "it worked"
-
-[node name="InteractArea6" parent="." instance=ExtResource("5_r6pjt")]
-position = Vector2(4473, 294)
-interact_label = "press shift to run faster"
-interact_type = "print_text"
-interact_value = "it worked"
-
-[node name="InteractArea5" parent="." instance=ExtResource("5_r6pjt")]
-position = Vector2(3285, 299)
-interact_label = "Ship analysis: there are 4 broken parts scattered around the land travel to find them and repair the ship "
-interact_type = "print_text"
-interact_value = "it worked"
-
-[node name="InteractArea4" parent="." instance=ExtResource("5_r6pjt")]
-position = Vector2(3928, 301)
-interact_label = "Fauna Analyisis: the following creature is friendly and has given previous explores the ability to run faster for short burst of time"
-interact_type = "print_text"
-interact_value = "it worked"
-
 [node name="PxSpaceShip" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(2966.2498, 300.4375)
@@ -75,3 +33,47 @@ texture = ExtResource("6_hrst0")
 
 [node name="DashScorpion" parent="." instance=ExtResource("7_aaajd")]
 position = Vector2(4237, 358.00003)
+
+[node name="Interactive_areas" type="Node" parent="."]
+
+[node name="InteractArea" parent="Interactive_areas" instance=ExtResource("5_r6pjt")]
+position = Vector2(1250, 474)
+interact_label = "press down to crouch"
+interact_type = "print_text"
+interact_value = "it worked"
+
+[node name="InteractArea2" parent="Interactive_areas" instance=ExtResource("5_r6pjt")]
+position = Vector2(1042, 475)
+interact_label = "Ship Log: 14/12/2025 near planet 42 fatal engine faliure occured, loosing altitude, pilot extraction protocol activated"
+interact_type = "print_text"
+interact_value = "it worked"
+
+[node name="InteractArea3" parent="Interactive_areas" instance=ExtResource("5_r6pjt")]
+position = Vector2(2286, 199)
+interact_label = "Planet 42 analysis: Atmosphere slightly toxic, terrain difficult to traverse, previous explorers report interacting with local fauna in unexplicable ways, that aided them in their traversal, some fauna are friendly others are not REMAIN CAUTIOUS "
+interact_type = "print_text"
+interact_value = "it worked"
+
+[node name="InteractArea7" parent="Interactive_areas" instance=ExtResource("5_r6pjt")]
+position = Vector2(2545, 411)
+interact_label = "you can doubble jump!!"
+interact_type = "print_text"
+interact_value = "it worked"
+
+[node name="InteractArea6" parent="Interactive_areas" instance=ExtResource("5_r6pjt")]
+position = Vector2(4473, 294)
+interact_label = "press shift to run faster"
+interact_type = "print_text"
+interact_value = "it worked"
+
+[node name="InteractArea5" parent="Interactive_areas" instance=ExtResource("5_r6pjt")]
+position = Vector2(3285, 299)
+interact_label = "Ship analysis: there are 4 broken parts scattered around the land travel to find them and repair the ship "
+interact_type = "print_text"
+interact_value = "it worked"
+
+[node name="InteractArea4" parent="Interactive_areas" instance=ExtResource("5_r6pjt")]
+position = Vector2(3928, 301)
+interact_label = "Fauna Analyisis: the following creature is friendly and has given previous explores the ability to run faster for short burst of time"
+interact_type = "print_text"
+interact_value = "it worked"
