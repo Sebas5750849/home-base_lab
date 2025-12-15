@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dgp4fel8mrfig" path="res://scripts/interact_area.gd" id="1_nxap6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yj081"]
-radius = 68.007355
+radius = 110.11358
 
 [node name="InteractArea" type="Area2D"]
 collision_layer = 128
