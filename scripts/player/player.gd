@@ -379,6 +379,7 @@ func check_level():
 		PlayerVar.can_wall_jump = true
 		PlayerVar.can_double_jump = true
 		PlayerVar.can_roll = true
+		PlayerVar.can_grapple = true
 
 func take_damage():
 	var current_pos = global_position
@@ -403,7 +404,7 @@ func check_dead():
 		var lvl_name = current_level.name
 		Analytics.send_death_event("Anonymous", current_pos, lvl_name)
 		# get_tree().reload_current_scene()
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/Level scenes/Lineair_test_levels/linlevel_0.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Menus/HomeScreenScenes/StartScreen.tscn")
 
 		get_tree().reload_current_scene()
 		#get_tree().call_deferred("change_scene_to_file", "res://scenes/Level scenes/Lineair_test_levels/linlevel_0.tscn")
