@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="4_aaajd"]
 [ext_resource type="PackedScene" uid="uid://dncympebfnlau" path="res://scenes/level_elements/Interaction/interact_area.tscn" id="5_r6pjt"]
 [ext_resource type="Texture2D" uid="uid://cyckkcku7sgb4" path="res://assets/Icon10_26.png" id="6_000lx"]
-[ext_resource type="Texture2D" uid="uid://6wumqgev8y2a" path="res://assets/px_space_ship.png" id="6_hrst0"]
+[ext_resource type="Texture2D" uid="uid://bt1b5eivbnqwk" path="res://assets/px_space_ship.png" id="6_hrst0"]
 [ext_resource type="PackedScene" uid="uid://bxfkmtkbidone" path="res://scenes/dash_scorpion.tscn" id="7_aaajd"]
 [ext_resource type="Texture2D" uid="uid://c35g7aydrixgh" path="res://assets/exclamation_point.png" id="8_81rdi"]
 [ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="8_pkgjj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81rdi"]
-size = Vector2(93, 305.5)
+size = Vector2(60.5, 204.75)
 
 [node name="GameExplanation" type="Node2D"]
 
@@ -22,7 +22,7 @@ tile_map_data = PackedByteArray("AAAAAAgAAAAOAAYAAAAAAAkAAAAOAAcAAAAAAAoAAAAGAAg
 tile_set = ExtResource("1_xbwfk")
 
 [node name="Player" parent="." instance=ExtResource("2_r6pjt")]
-position = Vector2(-3, -677)
+position = Vector2(5556, 228)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 limit_left = -1500
@@ -112,12 +112,12 @@ interact_label = "Fauna Analyisis: the following creature is friendly and has gi
 interact_type = "print_text"
 interact_value = "it worked"
 
-[node name="Node" type="Node" parent="."]
+[node name="Transitions" type="Node" parent="."]
 
-[node name="DoorArea2d" parent="Node" instance=ExtResource("8_pkgjj")]
+[node name="To_ravine_0" parent="Transitions" instance=ExtResource("8_pkgjj")]
 connected_room = "res://scenes/Level scenes/First draft test levels/ravine_0.tscn"
 player_pos = Vector2(-2496, -486)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/To_ravine_0"]
 position = Vector2(5839, 219.75)
 shape = SubResource("RectangleShape2D_81rdi")
