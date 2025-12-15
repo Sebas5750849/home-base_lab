@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=4 uid="uid://cnuwveauytg8u"]
+[gd_scene load_steps=6 format=4 uid="uid://cnuwveauytg8u"]
 
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="1_yxap5"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="2_qca0p"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesets/Tilesetlayer of the game.tres" id="3_y6ysk"]
+[ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="4_n3ek0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2vod"]
+size = Vector2(33.62383, 20)
 
 [node name="linlevel_5" type="Node2D"]
 
@@ -34,3 +38,12 @@ tile_set = ExtResource("3_y6ysk")
 
 [node name="IceBlocks" type="TileMapLayer" parent="TileMapLayers"]
 tile_set = ExtResource("3_y6ysk")
+
+[node name="DoorArea2d" parent="." instance=ExtResource("4_n3ek0")]
+connected_room = "res://scenes/Level scenes/First draft test levels/ravine_1.tscn"
+player_pos = Vector2(-2055, -641)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea2d"]
+position = Vector2(8394.409, 8124)
+scale = Vector2(208.51826, 20.520933)
+shape = SubResource("RectangleShape2D_t2vod")
