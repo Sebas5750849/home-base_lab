@@ -19,7 +19,7 @@ size = Vector2(111, 219)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_hemto")]
 
 [node name="Player" parent="." instance=ExtResource("2_303tw")]
-position = Vector2(-1222, -5296)
+position = Vector2(3461, -1759)
 
 [node name="Labels" type="Node2D" parent="."]
 
@@ -51,16 +51,19 @@ position = Vector2(-1090, 1456)
 
 [node name="Transitions" type="Node" parent="."]
 
-[node name="DoorArea2d" parent="Transitions" instance=ExtResource("5_gfsoy")]
-connected_room = "res://scenes/Level scenes/point_light_test.tscn"
-player_pos = Vector2(762, 163)
+[node name="To_end_ravine1" parent="Transitions" instance=ExtResource("5_gfsoy")]
+position = Vector2(-220, 2)
+connected_room = "res://scenes/Level scenes/First draft test levels/ravine_1.tscn"
+player_pos = Vector2(7137, -3572)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/DoorArea2d"]
-position = Vector2(-1383, -5341)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/To_end_ravine1"]
+position = Vector2(-1158, -5343)
 shape = SubResource("RectangleShape2D_b7jks")
 
 [node name="DoorArea2d2" parent="Transitions" instance=ExtResource("5_gfsoy")]
+connected_room = "res://scenes/Level scenes/forest_level.tscn"
+player_pos = Vector2(-325, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/DoorArea2d2"]
-position = Vector2(3889.5, -1705.5)
+position = Vector2(3866, -1721)
 shape = SubResource("RectangleShape2D_y7rie")

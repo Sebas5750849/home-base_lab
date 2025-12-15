@@ -90,17 +90,17 @@ polygon = PackedVector2Array(4.5369873, -14, 24, -14, 46.09314, -14, 49.77533, 2
 
 [node name="Node2" type="Node" parent="."]
 
-[node name="DoorArea2d" parent="Node2" instance=ExtResource("8_gtqwh")]
+[node name="To_ravine1_start" parent="Node2" instance=ExtResource("8_gtqwh")]
 connected_room = "res://scenes/Level scenes/First draft test levels/ravine_1.tscn"
-player_pos = Vector2(-2384, 101)
+player_pos = Vector2(-3300, 85)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2/DoorArea2d"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2/To_ravine1_start"]
 position = Vector2(-1027.5, -98)
 shape = SubResource("RectangleShape2D_urmaf")
 
 [node name="DoorArea2d2" parent="Node2" instance=ExtResource("8_gtqwh")]
-connected_room = "res://scenes/Level scenes/First draft test levels/ravine_2.tscn"
-player_pos = Vector2(-1222, -5296)
+connected_room = "res://scenes/Level scenes/First draft test levels/ravine_1.tscn"
+player_pos = Vector2(-1372, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2/DoorArea2d2"]
 position = Vector2(822, 139.5)
