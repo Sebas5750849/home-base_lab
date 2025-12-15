@@ -23,7 +23,7 @@ size = Vector2(55, 91.5)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_fns5f")]
 
 [node name="Player" parent="." instance=ExtResource("2_krpcp")]
-position = Vector2(6773, -3586)
+position = Vector2(-2630, -761)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -3221
@@ -48,11 +48,11 @@ offset_bottom = -948.0
 text = "Gain wall jump"
 
 [node name="Label3" type="Label" parent="Labels"]
-offset_left = -2728.0
-offset_top = 16.0
-offset_right = -2600.0
-offset_bottom = 39.0
-text = "To the light level"
+offset_left = -2827.0
+offset_top = 18.0
+offset_right = -2593.0
+offset_bottom = 41.0
+text = "There seems to be a cave here!"
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -110,7 +110,7 @@ offset_left = -1440.6385
 offset_top = -12.048187
 offset_right = -1275.6385
 offset_bottom = 10.951813
-text = "To end of light region"
+text = "Exit of the cave"
 
 [node name="SpikeArea" type="Area2D" parent="."]
 position = Vector2(1829, -18)
