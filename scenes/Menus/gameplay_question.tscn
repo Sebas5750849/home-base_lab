@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://eb0o005771x7"]
+
+[ext_resource type="Script" uid="uid://bwk8e3xl47b28" path="res://scripts/gametest_qst.gd" id="1_0v2y5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0v2y5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 290.0
+offset_right = 610.0
+offset_bottom = 313.0
+text = "Playtest?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 330.0
+offset_right = 610.0
+offset_bottom = 370.0
+
+[node name="yes" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Yes"
+
+[node name="no" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "No"
+
+[connection signal="pressed" from="HBoxContainer/yes" to="." method="_on_yes_pressed"]
+[connection signal="toggled" from="HBoxContainer/yes" to="." method="_on_yes_toggled"]
+[connection signal="pressed" from="HBoxContainer/no" to="." method="_on_no_pressed"]
+[connection signal="toggled" from="HBoxContainer/no" to="." method="_on_no_toggled"]
