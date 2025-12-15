@@ -23,6 +23,12 @@ size = Vector2(50, 19)
 [node name="Player" parent="." instance=ExtResource("2_krpcp")]
 position = Vector2(-2045, -227)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -2876
+limit_top = -3565
+limit_right = 7280
+limit_bottom = 250
+
 [node name="Labels" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="Labels"]
