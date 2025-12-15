@@ -17,4 +17,5 @@ func _on_options_button_pressed() -> void:
 
 	options.back.connect(func():
 		options.queue_free()
+		$VBoxContainer/StartButton.grab_focus()
 	)
