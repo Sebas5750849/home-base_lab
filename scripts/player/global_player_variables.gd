@@ -65,3 +65,5 @@ var exit_velocity: Vector2
 
 var current_state = null
 var previous_state = null
+
+var start_position: Vector2 = Vector2.ZERO

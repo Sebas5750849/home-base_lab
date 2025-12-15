@@ -23,7 +23,7 @@ size = Vector2(55, 91.5)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_fns5f")]
 
 [node name="Player" parent="." instance=ExtResource("2_krpcp")]
-position = Vector2(6773, -3586)
+position = Vector2(6549, -3642)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -3221

@@ -85,6 +85,8 @@ var is_in_danger: bool = false
 
 #region main game loop
 func _ready() -> void:
+	if PlayerVar.start_position != Vector2.ZERO:
+		position = PlayerVar.start_position
 	# Make sure raycasts dont collide with player
 	rc_bottom_left.add_exception(self)
 	rc_bottom_right.add_exception(self)
@@ -128,6 +130,8 @@ func _ready() -> void:
 	for child in hearts_parent.get_children():
 		PlayerVar.hearts_list.append(child)
 	update_heart_display()
+	
+	PlayerVar.start_position = position
 	#endregion
 	
 	PlayerVar.can_take_damage = true

@@ -40,6 +40,7 @@ position = Vector2(454, 2116)
 position = Vector2(4237, 358.00003)
 
 [node name="GetAbility" parent="DashScorpion" instance=ExtResource("6_hkkub")]
+ability_to_get = "dash"
 
 [node name="SetDecoration" type="Node" parent="."]
 
