@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cf552bd16wl8r"]
+[gd_scene load_steps=17 format=4 uid="uid://cf552bd16wl8r"]
 
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="1_kw86b"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="2_eje30"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://x73p0yyfc5l3" path="res://assets/A2.png" id="4_x47u1"]
 [ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="6_x47u1"]
 [ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="7_ohuq2"]
+[ext_resource type="PackedScene" uid="uid://dpyw7hiothnnx" path="res://scenes/Get_Ability.tscn" id="8_7rbxu"]
+[ext_resource type="Texture2D" uid="uid://bjushtfmioypq" path="res://assets/Rope.png" id="9_3gtri"]
+[ext_resource type="Texture2D" uid="uid://1si156ccq8bs" path="res://assets/grapple_animal.png" id="10_ddhuy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohuq2"]
 texture = ExtResource("3_vp36s")
@@ -1420,7 +1423,7 @@ tile_map_data = PackedByteArray("AAD7//f/AAAUAAEAAAD6//f/AAAUAAEAAAD5//f/AAAUAAE
 tile_set = SubResource("TileSet_x47u1")
 
 [node name="Player" parent="." instance=ExtResource("3_uh83x")]
-position = Vector2(-325, 6)
+position = Vector2(1646, -247)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -960
@@ -1465,10 +1468,24 @@ player = NodePath("../Player")
 
 [node name="Node" type="Node" parent="."]
 
-[node name="DoorArea2d" parent="Node" instance=ExtResource("7_ohuq2")]
-connected_room = "res://scenes/Level scenes/First draft test levels/ravine_1.tscn"
-player_pos = Vector2(6335, -3462)
+[node name="ToRavine2" parent="Node" instance=ExtResource("7_ohuq2")]
+connected_room = "res://scenes/Level scenes/First draft test levels/ravine_2.tscn"
+player_pos = Vector2(3752, -1628)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/ToRavine2"]
 position = Vector2(-494, 176)
 shape = SubResource("RectangleShape2D_gte1n")
+
+[node name="GetAbility" parent="." instance=ExtResource("8_7rbxu")]
+position = Vector2(1862, -246)
+ability_to_get = "grapple"
+
+[node name="Sprite2D" type="Sprite2D" parent="GetAbility"]
+position = Vector2(1, -60)
+scale = Vector2(0.0859375, 0.3671875)
+texture = ExtResource("9_3gtri")
+
+[node name="Sprite2D2" type="Sprite2D" parent="GetAbility"]
+position = Vector2(2, -1.000001)
+scale = Vector2(1.5625, 1.59375)
+texture = ExtResource("10_ddhuy")
