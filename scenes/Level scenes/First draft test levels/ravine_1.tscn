@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dcfdqfnd4dbll"]
+[gd_scene load_steps=10 format=4 uid="uid://dcfdqfnd4dbll"]
 
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="1_fns5f"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="2_krpcp"]
@@ -6,6 +6,13 @@
 [ext_resource type="TileSet" uid="uid://bsbluv4krw2ag" path="res://assets/Tilesets/RavineTileset.tres" id="4_krpcp"]
 [ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="5_oi5tg"]
 [ext_resource type="Script" uid="uid://bft0gkfy57fos" path="res://scripts/danger_zone.gd" id="6_incyi"]
+[ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="7_a4svg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6d243"]
+size = Vector2(0.034201622, 2.8049088)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mn5l"]
+size = Vector2(50, 19)
 
 [node name="Ravine_1" type="Node2D"]
 
@@ -14,7 +21,7 @@
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_fns5f")]
 
 [node name="Player" parent="." instance=ExtResource("2_krpcp")]
-position = Vector2(-1750, -200)
+position = Vector2(-2045, -227)
 
 [node name="Labels" type="Node2D" parent="."]
 
@@ -124,5 +131,25 @@ polygon = PackedVector2Array(0.85827637, -14, 8.440006, -14, 24, -14, 36.103474,
 position = Vector2(4468.508, -1152)
 scale = Vector2(1.8002771, 1)
 polygon = PackedVector2Array(4.161865, -14, 4.4291763, -14.0000305, 8.440006, -14, 24, -14, 36.103474, -14, 46.09314, -14, 49.77533, 2, 36.94464, 2, 0, 2)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="DoorArea2d" parent="Node" instance=ExtResource("7_a4svg")]
+connected_room = "res://scenes/Level scenes/point_light_test.tscn"
+player_pos = Vector2(-958, 53)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d"]
+position = Vector2(-2319, 61.999996)
+scale = Vector2(-1456.2649, -44.576168)
+shape = SubResource("RectangleShape2D_6d243")
+
+[node name="DoorArea2d2" parent="Node" instance=ExtResource("7_a4svg")]
+connected_room = "res://scenes/Level scenes/forest_level.tscn"
+player_pos = Vector2(-444, 114)
+player_jump_on_enter = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d2"]
+position = Vector2(6336, -3558.5)
+shape = SubResource("RectangleShape2D_8mn5l")
 
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered"]

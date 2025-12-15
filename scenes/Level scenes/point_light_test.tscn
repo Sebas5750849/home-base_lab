@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c7kgkeqw77nu3"]
+[gd_scene load_steps=13 format=4 uid="uid://c7kgkeqw77nu3"]
 
 [ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="1_0fte0"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="2_fv6eo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="4_suh83"]
 [ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesets/Tilesetlayer of the game.tres" id="5_0fte0"]
 [ext_resource type="TileSet" uid="uid://bsbluv4krw2ag" path="res://assets/Tilesets/RavineTileset.tres" id="5_4vgjb"]
+[ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="8_gtqwh"]
 [ext_resource type="Script" uid="uid://bft0gkfy57fos" path="res://scripts/danger_zone.gd" id="8_urmaf"]
 
 [sub_resource type="Gradient" id="Gradient_7k6sa"]
@@ -17,6 +18,12 @@ gradient = SubResource("Gradient_7k6sa")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urmaf"]
+size = Vector2(61, 332)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tbmc"]
+size = Vector2(34, 97)
+
 [node name="WallJumpLevel" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -24,6 +31,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_fv6eo")]
 
 [node name="Player" parent="." instance=ExtResource("3_hrm4p")]
+position = Vector2(-955, 52)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 light_mask = 3
@@ -79,6 +87,24 @@ script = ExtResource("8_urmaf")
 position = Vector2(582.00006, -131.00002)
 scale = Vector2(1.9010419, 1)
 polygon = PackedVector2Array(4.5369873, -14, 24, -14, 46.09314, -14, 49.77533, 2, 0, 2)
+
+[node name="Node2" type="Node" parent="."]
+
+[node name="DoorArea2d" parent="Node2" instance=ExtResource("8_gtqwh")]
+connected_room = "res://scenes/Level scenes/First draft test levels/ravine_1.tscn"
+player_pos = Vector2(-2384, 101)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2/DoorArea2d"]
+position = Vector2(-1027.5, -98)
+shape = SubResource("RectangleShape2D_urmaf")
+
+[node name="DoorArea2d2" parent="Node2" instance=ExtResource("8_gtqwh")]
+connected_room = "res://scenes/Level scenes/First draft test levels/ravine_2.tscn"
+player_pos = Vector2(-1224, -1948)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2/DoorArea2d2"]
+position = Vector2(822, 139.5)
+shape = SubResource("RectangleShape2D_3tbmc")
 
 [connection signal="body_entered" from="Node/Area2D" to="Node/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Node/Area2D2" to="Node/Area2D2" method="_on_body_entered"]

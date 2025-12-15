@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=4 uid="uid://sudf3y68i5v4"]
+[gd_scene load_steps=8 format=4 uid="uid://sudf3y68i5v4"]
 
-[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/pause_menu.tscn" id="1_hemto"]
-[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/player.tscn" id="2_303tw"]
-[ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesetlayer of the game.tres" id="3_gfsoy"]
+[ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="1_hemto"]
+[ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="2_303tw"]
+[ext_resource type="TileSet" uid="uid://mhn0gcjb225o" path="res://assets/Tilesets/Tilesetlayer of the game.tres" id="3_gfsoy"]
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="4_303tw"]
+[ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="5_gfsoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7jks"]
+size = Vector2(71, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7rie"]
+size = Vector2(111, 219)
 
 [node name="Ravine_2" type="Node2D"]
 
@@ -12,7 +19,7 @@
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_hemto")]
 
 [node name="Player" parent="." instance=ExtResource("2_303tw")]
-position = Vector2(-638, -5106)
+position = Vector2(-678, -5064)
 
 [node name="Labels" type="Node2D" parent="."]
 
@@ -40,3 +47,19 @@ tile_set = ExtResource("3_gfsoy")
 
 [node name="Reset ma game" parent="." instance=ExtResource("4_303tw")]
 position = Vector2(-1090, 1456)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="DoorArea2d" parent="Node" instance=ExtResource("5_gfsoy")]
+connected_room = "res://scenes/Level scenes/point_light_test.tscn"
+player_pos = Vector2(762, 163)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d"]
+position = Vector2(-1315, -1981)
+shape = SubResource("RectangleShape2D_b7jks")
+
+[node name="DoorArea2d2" parent="Node" instance=ExtResource("5_gfsoy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d2"]
+position = Vector2(3889.5, -1705.5)
+shape = SubResource("RectangleShape2D_y7rie")
