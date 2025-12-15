@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxfkmtkbidone"]
+
+[ext_resource type="Script" uid="uid://cqewkg423tasc" path="res://scripts/dash_scorpion.gd" id="1_h83uy"]
+[ext_resource type="Texture2D" uid="uid://bbagc3fvkuqs" path="res://assets/Icon35.png" id="2_0cehk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0cehk"]
+radius = 14.5161085
+
+[node name="DashScorpion" type="CharacterBody2D"]
+rotation = -0.38685614
+scale = Vector2(0.83239746, 0.8269615)
+script = ExtResource("1_h83uy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0cehk")
+
+[node name="Icon35" type="Sprite2D" parent="."]
+position = Vector2(-0.65932566, -1.5761055)
+texture = ExtResource("2_0cehk")

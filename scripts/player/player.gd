@@ -32,6 +32,13 @@ extends CharacterBody2D
 # levels
 @onready var current_level = $".."
 
+# Interaction
+@onready var all_interactions = [] 
+# handles the interactions so that they are organized
+# when interaction is entered it will be added to array but remember all other current 
+# interactions
+@onready var InteractLabel = $InteractionComponents/InteractLabel
+
 # External collision shapes
 var standing_shape = preload("res://resources/standing_collision_shape.tres")
 var crouching_shape = preload("res://resources/crouching_collision_shape.tres")
@@ -85,6 +92,7 @@ func _ready() -> void:
 	rc_grapple.add_exception(self)
 	crouch_ray_1.add_exception(self)
 	crouch_ray_2.add_exception(self)
+	update_interactions()
 	
 	for child_state in States.get_children():
 		child_state.States = States
@@ -405,3 +413,22 @@ func check_dead():
 
 func _on_invinsibility_timer_timeout() -> void:
 	PlayerVar.can_take_damage = true
+
+## Interaction Methods 
+
+
+func _on_interaction_area_area_entered(area: Area2D) -> void:
+	all_interactions.insert(0, area)
+	update_interactions()
+
+
+func _on_interaction_area_area_exited(area: Area2D) -> void:
+	all_interactions.erase(area)
+	update_interactions()
+
+func update_interactions():
+	if all_interactions:
+		InteractLabel.text = all_interactions[0].interact_label
+	else:
+		InteractLabel.text = ""
+		
