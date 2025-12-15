@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="7_a4svg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6d243"]
-size = Vector2(0.034201622, 1.8844151)
+size = Vector2(0.026780903, 1.2338431)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mn5l"]
 size = Vector2(50, 75)
@@ -21,10 +21,10 @@ size = Vector2(50, 75)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_fns5f")]
 
 [node name="Player" parent="." instance=ExtResource("2_krpcp")]
-position = Vector2(7137, -3572)
+position = Vector2(-2992, -928)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -2876
+limit_left = -3806
 limit_top = -3565
 limit_right = 7280
 limit_bottom = 250
@@ -44,6 +44,13 @@ offset_top = -971.0
 offset_right = 5249.0
 offset_bottom = -948.0
 text = "Gain wall jump"
+
+[node name="Label3" type="Label" parent="Labels"]
+offset_left = -3397.0
+offset_top = 29.0
+offset_right = -3269.0
+offset_bottom = 52.0
+text = "To the light level"
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -88,6 +95,21 @@ offset_right = 4698.0
 offset_bottom = -1586.0
 text = "Coin"
 
+[node name="Label5" type="Label" parent="Notations for future implements"]
+offset_left = 323.0
+offset_top = -133.0
+offset_right = 521.0
+offset_bottom = -74.0
+theme_override_font_sizes/font_size = 42
+text = "←Go back"
+
+[node name="Label6" type="Label" parent="Notations for future implements"]
+offset_left = -1440.6385
+offset_top = -12.048187
+offset_right = -1275.6385
+offset_bottom = 10.951813
+text = "To end of light region"
+
 [node name="SpikeArea" type="Area2D" parent="."]
 position = Vector2(1829, -18)
 collision_layer = 2
@@ -125,7 +147,7 @@ connected_room = "res://scenes/Level scenes/point_light_test.tscn"
 player_pos = Vector2(770, 170)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/To_end_of_point_light_test"]
-position = Vector2(-1379.0001, -18)
+position = Vector2(-1451.0001, -14)
 rotation = -3.1415925
 scale = Vector2(1456.2649, 44.576168)
 shape = SubResource("RectangleShape2D_6d243")
@@ -171,13 +193,5 @@ player = NodePath("../../Player")
 [node name="flower_enemy2" parent="flower_enemies" node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
 position = Vector2(810, -518)
 player = NodePath("../../Player")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 323.0
-offset_top = -133.0
-offset_right = 521.0
-offset_bottom = -74.0
-theme_override_font_sizes/font_size = 42
-text = "←Go back"
 
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered"]
