@@ -15,7 +15,10 @@ size = Vector2(33.62383, 20)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_yxap5")]
 
 [node name="Player" parent="." instance=ExtResource("2_qca0p")]
-position = Vector2(4836, 7159)
+position = Vector2(-2496, -486)
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+limit_left = -2660
 
 [node name="Labels" type="Node2D" parent="."]
 
@@ -40,9 +43,8 @@ tile_set = ExtResource("3_y6ysk")
 tile_set = ExtResource("3_y6ysk")
 
 [node name="DoorArea2d" parent="." instance=ExtResource("4_n3ek0")]
-position = Vector2(0, -28)
 connected_room = "res://scenes/Level scenes/First draft test levels/ravine_1.tscn"
-player_pos = Vector2(-2710, -210)
+player_pos = Vector2(-2055, -641)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea2d"]
 position = Vector2(8394.409, 8124)
