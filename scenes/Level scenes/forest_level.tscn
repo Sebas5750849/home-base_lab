@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dj8vqtv07i5xb" path="res://scenes/flower_enemy.tscn" id="6_x47u1"]
 [ext_resource type="PackedScene" uid="uid://bk6ayeu5i663s" path="res://scenes/Level scenes/Test_Levels_Mike/DoorArea2D.tscn" id="7_ohuq2"]
 [ext_resource type="PackedScene" uid="uid://dpyw7hiothnnx" path="res://scenes/Get_Ability.tscn" id="8_7rbxu"]
-[ext_resource type="Texture2D" uid="uid://c4g22vj5bsowi" path="res://assets/Rope.png" id="9_3gtri"]
+[ext_resource type="Texture2D" uid="uid://bjushtfmioypq" path="res://assets/Rope.png" id="9_3gtri"]
 [ext_resource type="Texture2D" uid="uid://1si156ccq8bs" path="res://assets/grapple_animal.png" id="10_ddhuy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohuq2"]
@@ -1457,7 +1457,7 @@ offset_left = 4686.0
 offset_top = -885.0
 offset_right = 4726.0
 offset_bottom = -862.0
-text = "Enter forest canopy part of level ->"
+text = "Thanks for playing our early release!"
 
 [node name="Reset ma game" parent="." instance=ExtResource("1_kw86b")]
 position = Vector2(-4, 325)
