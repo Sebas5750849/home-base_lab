@@ -32,6 +32,7 @@ func _on_options_pressed() -> void:
 
 	options.back.connect(func():
 		options.queue_free()
+		$PanelContainer/VBoxContainer/Resume.grab_focus()
 	)
 
 func _on_quit_pressed() -> void:
