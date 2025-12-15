@@ -109,18 +109,34 @@ focus_mode = 2
 
 [node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Restart")
 text = "Resume"
 
 [node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Options")
 text = "Restart"
 
 [node name="Options" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Restart")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Quit")
 text = "Options"
 
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Resume")
 text = "Quit to menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
