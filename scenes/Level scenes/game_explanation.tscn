@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://y7iafoxgt52m"]
+[gd_scene load_steps=13 format=4 uid="uid://y7iafoxgt52m"]
 
 [ext_resource type="TileSet" uid="uid://bsbluv4krw2ag" path="res://assets/Tilesets/RavineTileset.tres" id="1_xbwfk"]
 [ext_resource type="PackedScene" uid="uid://fp2kjv70lur3" path="res://scenes/Player/player.tscn" id="2_r6pjt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="4_aaajd"]
 [ext_resource type="PackedScene" uid="uid://dncympebfnlau" path="res://scenes/level_elements/Interaction/interact_area.tscn" id="5_r6pjt"]
 [ext_resource type="Texture2D" uid="uid://cyckkcku7sgb4" path="res://assets/Icon10_26.png" id="6_000lx"]
+[ext_resource type="PackedScene" uid="uid://dpyw7hiothnnx" path="res://scenes/Get_Ability.tscn" id="6_hkkub"]
 [ext_resource type="Texture2D" uid="uid://bt1b5eivbnqwk" path="res://assets/px_space_ship.png" id="6_hrst0"]
 [ext_resource type="PackedScene" uid="uid://bxfkmtkbidone" path="res://scenes/dash_scorpion.tscn" id="7_aaajd"]
 [ext_resource type="Texture2D" uid="uid://c35g7aydrixgh" path="res://assets/exclamation_point.png" id="8_81rdi"]
@@ -45,9 +46,7 @@ position = Vector2(454, 2116)
 [node name="DashScorpion" parent="." instance=ExtResource("7_aaajd")]
 position = Vector2(4237, 358.00003)
 
-[node name="DashScorpion2" parent="." instance=ExtResource("7_aaajd")]
-position = Vector2(4237, 358.00003)
-scale = Vector2(0.8323974, 0.8269615)
+[node name="GetAbility" parent="DashScorpion" instance=ExtResource("6_hkkub")]
 
 [node name="SetDecoration" type="Node" parent="."]
 
