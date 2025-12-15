@@ -42,6 +42,12 @@ shadow_filter = 2
 texture = SubResource("GradientTexture2D_dmnng")
 texture_scale = 5.0
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -1035
+limit_top = -800
+limit_right = 825
+limit_bottom = 200
+
 [node name="Reset ma game" parent="." instance=ExtResource("4_suh83")]
 position = Vector2(-408, 130)
 
@@ -105,6 +111,9 @@ player_pos = Vector2(-1224, -1948)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2/DoorArea2d2"]
 position = Vector2(822, 139.5)
 shape = SubResource("RectangleShape2D_3tbmc")
+
+[node name="Reset ma game2" parent="." instance=ExtResource("4_suh83")]
+position = Vector2(-97, 153)
 
 [connection signal="body_entered" from="Node/Area2D" to="Node/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Node/Area2D2" to="Node/Area2D2" method="_on_body_entered"]
