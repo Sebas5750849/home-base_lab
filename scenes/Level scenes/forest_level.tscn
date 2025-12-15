@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cf552bd16wl8r"]
+[gd_scene load_steps=14 format=4 uid="uid://cf552bd16wl8r"]
 
 [ext_resource type="PackedScene" uid="uid://bpei5b4drb5en" path="res://scenes/reset_ma_game.tscn" id="1_kw86b"]
 [ext_resource type="PackedScene" uid="uid://dswr0ooxvgmpc" path="res://scenes/Menus/pause_menu.tscn" id="2_eje30"]
@@ -1401,9 +1401,6 @@ sources/0 = SubResource("TileSetAtlasSource_vp36s")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gte1n"]
 size = Vector2(190, 76)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohuq2"]
-size = Vector2(39, 870.5)
-
 [node name="forest_level" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1423,6 +1420,10 @@ tile_set = SubResource("TileSet_x47u1")
 
 [node name="Player" parent="." instance=ExtResource("3_uh83x")]
 position = Vector2(-281, -6)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -960
+limit_bottom = 295
 
 [node name="Labels" type="Node2D" parent="."]
 
@@ -1470,9 +1471,3 @@ player_pos = Vector2(6335, -3462)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d"]
 position = Vector2(-494, 176)
 shape = SubResource("RectangleShape2D_gte1n")
-
-[node name="DoorArea2d2" parent="Node" instance=ExtResource("7_ohuq2")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d2"]
-position = Vector2(-950, -428.75)
-shape = SubResource("RectangleShape2D_ohuq2")

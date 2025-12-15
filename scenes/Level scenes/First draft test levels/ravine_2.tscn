@@ -21,6 +21,11 @@ size = Vector2(111, 219)
 [node name="Player" parent="." instance=ExtResource("2_303tw")]
 position = Vector2(-678, -5064)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -1590
+limit_right = 3885
+limit_bottom = 880
+
 [node name="Labels" type="Node2D" parent="."]
 
 [node name="Label2" type="Label" parent="Labels"]
