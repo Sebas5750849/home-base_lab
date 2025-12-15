@@ -65,10 +65,10 @@ player_pos = Vector2(7137, -3572)
 position = Vector2(-1158, -5343)
 shape = SubResource("RectangleShape2D_b7jks")
 
-[node name="DoorArea2d2" parent="Transitions" instance=ExtResource("5_gfsoy")]
+[node name="ToForest" parent="Transitions" instance=ExtResource("5_gfsoy")]
 connected_room = "res://scenes/Level scenes/forest_level.tscn"
 player_pos = Vector2(-325, 6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/DoorArea2d2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/ToForest"]
 position = Vector2(3866, -1721)
 shape = SubResource("RectangleShape2D_y7rie")

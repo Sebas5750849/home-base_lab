@@ -42,11 +42,11 @@ const MAX_FALL_VELOCITY: float = 1000
 var move_speed: float = RUNNING_SPEED
 var jump_speed: float = JUMP_VELOCITY
 
-var can_dash: bool
-var can_wall_jump: bool
-var can_double_jump: bool
-var can_roll: bool
-var can_grapple: bool
+var can_dash: bool = false
+var can_wall_jump: bool = false
+var can_double_jump: bool = false
+var can_roll: bool = false
+var can_grapple: bool = false
 
 var player_velocity: Vector2
 
