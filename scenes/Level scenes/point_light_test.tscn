@@ -86,7 +86,7 @@ polygon = PackedVector2Array(4.5369873, -14, 24, -14, 46.09314, -14, 49.77533, 2
 
 [node name="To_ravine1_start" parent="Transitions" instance=ExtResource("8_gtqwh")]
 connected_room = "res://scenes/Level scenes/First draft test levels/ravine_1.tscn"
-player_pos = Vector2(-3300, 85)
+player_pos = Vector2(-2609, 85)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/To_ravine1_start"]
 position = Vector2(-1027.5, -98)
