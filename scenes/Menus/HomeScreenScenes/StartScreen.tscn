@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dg8ojy1klpafa"]
 
-[ext_resource type="Texture2D" uid="uid://clhe8y3bacsph" path="res://assets/crashed_space_ship.png" id="1_8jnx0"]
+[ext_resource type="Texture2D" uid="uid://8oc3epejrvxr" path="res://assets/crashed_space_ship.png" id="1_8jnx0"]
 [ext_resource type="Script" uid="uid://db0qj5ao87g4x" path="res://scripts/start_screen.gd" id="1_nuicx"]
 
 [node name="StartScreen" type="Control"]

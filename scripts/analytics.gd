@@ -1,5 +1,6 @@
 extends Node
 
+var testing: bool
 const supabase_url = "https://dwuljxbensnlylflfmqq.supabase.co"
 const supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR3dWxqeGJlbnNubHlsZmxmbXFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUyOTAxMTMsImV4cCI6MjA4MDg2NjExM30.gW94SJAYutdK3rJSoECZEPmiSegjK0GcHQkgNMcN2_A"
 

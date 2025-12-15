@@ -383,9 +383,10 @@ func check_level():
 			PlayerVar.can_grapple = true
 
 func take_damage():
-	var current_pos = global_position
-	var lvl_name = current_level.name
-	Analytics.send_damage_event("Anonymous", current_pos, lvl_name)
+	if Analytics.testing:
+		var current_pos = global_position
+		var lvl_name = current_level.name
+		Analytics.send_damage_event("Anonymous", current_pos, lvl_name)
 	if PlayerVar.health > 0:
 		PlayerVar.health -= 1
 		update_heart_display()
@@ -401,10 +402,12 @@ func update_heart_display():
 func check_dead():
 	if PlayerVar.health <= 0:
 		# send data to supabase
-		var current_pos = global_position
-		var lvl_name = current_level.name
-		Analytics.send_death_event("Anonymous", current_pos, lvl_name)
-		#get_tree().call_deferred("change_scene_to_file", "res://scenes/Level scenes/game_explanation.tscn")
+		if Analytics.testing:
+			var current_pos = global_position
+			var lvl_name = current_level.name
+			Analytics.send_death_event("Anonymous", current_pos, lvl_name)
+		# get_tree().reload_current_scene()
+		# get_tree().call_deferred("change_scene_to_file", "res://scenes/Menus/HomeScreenScenes/StartScreen.tscn")
 
 		get_tree().reload_current_scene()
 		PlayerVar.death_count += 1
