@@ -100,7 +100,7 @@ shape = SubResource("RectangleShape2D_urmaf")
 
 [node name="DoorArea2d2" parent="Node2" instance=ExtResource("8_gtqwh")]
 connected_room = "res://scenes/Level scenes/First draft test levels/ravine_2.tscn"
-player_pos = Vector2(-1224, -1948)
+player_pos = Vector2(-1222, -5296)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2/DoorArea2d2"]
 position = Vector2(822, 139.5)

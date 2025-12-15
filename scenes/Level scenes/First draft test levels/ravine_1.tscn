@@ -82,26 +82,6 @@ offset_right = 4698.0
 offset_bottom = -1586.0
 text = "Coin"
 
-[node name="flower_enemy" parent="." node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
-position = Vector2(-422, 17)
-player = NodePath("../Player")
-
-[node name="flower_enemy5" parent="." node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
-position = Vector2(4829, -940)
-player = NodePath("../Player")
-
-[node name="flower_enemy4" parent="." node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
-position = Vector2(3779, -621)
-player = NodePath("../Player")
-
-[node name="flower_enemy3" parent="." node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
-position = Vector2(1739, -448)
-player = NodePath("../Player")
-
-[node name="flower_enemy2" parent="." node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
-position = Vector2(810, -518)
-player = NodePath("../Player")
-
 [node name="SpikeArea" type="Area2D" parent="."]
 position = Vector2(1829, -18)
 collision_layer = 2
@@ -132,24 +112,46 @@ position = Vector2(4468.508, -1152)
 scale = Vector2(1.8002771, 1)
 polygon = PackedVector2Array(4.161865, -14, 4.4291763, -14.0000305, 8.440006, -14, 24, -14, 36.103474, -14, 46.09314, -14, 49.77533, 2, 36.94464, 2, 0, 2)
 
-[node name="Node" type="Node" parent="."]
+[node name="Transitions" type="Node" parent="."]
 
-[node name="DoorArea2d" parent="Node" instance=ExtResource("7_a4svg")]
+[node name="DoorArea2d" parent="Transitions" instance=ExtResource("7_a4svg")]
 connected_room = "res://scenes/Level scenes/point_light_test.tscn"
 player_pos = Vector2(-958, 53)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/DoorArea2d"]
 position = Vector2(-2319, 61.999996)
 scale = Vector2(-1456.2649, -44.576168)
 shape = SubResource("RectangleShape2D_6d243")
 
-[node name="DoorArea2d2" parent="Node" instance=ExtResource("7_a4svg")]
+[node name="DoorArea2d2" parent="Transitions" instance=ExtResource("7_a4svg")]
 connected_room = "res://scenes/Level scenes/forest_level.tscn"
 player_pos = Vector2(-444, 114)
 player_jump_on_enter = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/DoorArea2d2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transitions/DoorArea2d2"]
 position = Vector2(6336, -3558.5)
 shape = SubResource("RectangleShape2D_8mn5l")
+
+[node name="flower_enemies" type="Node" parent="."]
+
+[node name="flower_enemy" parent="flower_enemies" node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
+position = Vector2(-422, 17)
+player = NodePath("../../Player")
+
+[node name="flower_enemy5" parent="flower_enemies" node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
+position = Vector2(4829, -940)
+player = NodePath("../../Player")
+
+[node name="flower_enemy4" parent="flower_enemies" node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
+position = Vector2(3779, -621)
+player = NodePath("../../Player")
+
+[node name="flower_enemy3" parent="flower_enemies" node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
+position = Vector2(1739, -448)
+player = NodePath("../../Player")
+
+[node name="flower_enemy2" parent="flower_enemies" node_paths=PackedStringArray("player") groups=["Enemy"] instance=ExtResource("5_oi5tg")]
+position = Vector2(810, -518)
+player = NodePath("../../Player")
 
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered"]
